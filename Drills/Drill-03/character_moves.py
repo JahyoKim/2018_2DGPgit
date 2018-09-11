@@ -43,5 +43,4 @@ while(1):
        y = 300 - 200 * math.cos(math.radians(i))
        i = i + 1
     
-    
 close_canvas()
