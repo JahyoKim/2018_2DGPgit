@@ -66,7 +66,7 @@ def move_p5(): #(715, 136)
         x += moveX
         y -= moveY
         delay(0.05)
-##########################
+
 def move_p6(): #(316, 225)
     x, y = 715, 136
     moveX = (715 - 316) // 10
@@ -82,36 +82,36 @@ def move_p6(): #(316, 225)
 
 def move_p7(): #(510, 92)
     x, y = 316, 225
-    moveX = (203 - 132) // 10
-    moveY = (535 - 243) // 10
+    moveX = (510 - 316) // 10
+    moveY = (225 - 92) // 10
 
-    while 132 <= x and 243 <= y:
+    while x <= 510 and 92 <= y:
         clear_canvas_now()
         grass.draw_now(400, 30)
         character.draw_now(x, y)
-        x -= moveX
+        x += moveX
         y -= moveY
         delay(0.05)
 
 def move_p8(): #(692, 518)
     x, y = 510, 92
-    moveX = (203 - 132) // 10
-    moveY = (535 - 243) // 10
+    moveX = (692 - 510) // 10
+    moveY = (518 - 92) // 10
 
-    while 132 <= x and 243 <= y:
+    while x <= 692 and y <= 518:
         clear_canvas_now()
         grass.draw_now(400, 30)
         character.draw_now(x, y)
-        x -= moveX
-        y -= moveY
+        x += moveX
+        y += moveY
         delay(0.05)
 
 def move_p9(): #(682, 336)
     x, y = 692, 518
-    moveX = (203 - 132) // 10
-    moveY = (535 - 243) // 10
+    moveX = (692 - 682) // 10
+    moveY = (518 - 336) // 10
 
-    while 132 <= x and 243 <= y:
+    while 682 <= x and 336 <= y:
         clear_canvas_now()
         grass.draw_now(400, 30)
         character.draw_now(x, y)
@@ -121,53 +121,41 @@ def move_p9(): #(682, 336)
 
 def move_p10(): #(712, 349)
     x, y = 682, 336
-    moveX = (203 - 132) // 10
-    moveY = (535 - 243) // 10
+    moveX = (712 - 682) // 10
+    moveY = (349 - 336) // 10
 
-    while 132 <= x and 243 <= y:
+    while x <= 712 and y <= 349:
         clear_canvas_now()
         grass.draw_now(400, 30)
         character.draw_now(x, y)
-        x -= moveX
-        y -= moveY
+        x += moveX
+        y += moveY
         delay(0.05)
 
-def move_to_p1():
+def move_to_p1(): #(203, 535)
     x, y = 712, 349
-    moveX = (203 - 132) // 10
-    moveY = (535 - 243) // 10
+    moveX = (712 - 203) // 10
+    moveY = (535 - 349) // 10
 
-    while 132 <= x and 243 <= y:
+    while 203 <= x and y <= 535:
         clear_canvas_now()
         grass.draw_now(400, 30)
         character.draw_now(x, y)
         x -= moveX
-        y -= moveY
+        y += moveY
         delay(0.05)
 
-move_p1()
-move_p2()
-move_p3()
-move_p4()
-move_p5()
-#move_p6()
-#move_p7()
-#move_p8()
-#move_p9()
-#move_p10()
-#move_to_p1()
-
-#while True:
-#    move_p1()
-#    move_p2()
-#   #move_p3()
-#   #move_p4()
-#   #move_p5()
-#   #move_p6()
-#   #move_p7()
-#   #move_p8()
-#   #move_p9()
-#   #move_p10()
-#   #move_to_p1()
+while True:
+    move_p1()
+    move_p2()
+    move_p3()
+    move_p4()
+    move_p5()
+    move_p6()
+    move_p7()
+    move_p8()
+    move_p9()
+    move_p10()
+    move_to_p1()
 
 close_canvas()
