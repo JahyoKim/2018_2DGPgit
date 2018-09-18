@@ -15,6 +15,18 @@ def move_p1():
     character.draw_now(x, y)
 
 def move_p2():
+    x, y = 203, 535
+    while 132 < x:
+        clear_canvas_now()
+        grass.draw_now(400, 30)
+        character.draw_now(x, y)
+        x -= 1
+    while 243 < y:
+        clear_canvas_now()
+        grass.draw_now(400, 30)
+        character.draw_now(x, y)
+        y -= 1
+
     pass
 
 def move_p3():
@@ -44,17 +56,20 @@ def move_p10():
 def move_to_p1():
     pass
 
-while True:
-    move_p1()
-    move_p2()
-    move_p3()
-    move_p4()
-    move_p5()
-    move_p6()
-    move_p7()
-    move_p8()
-    move_p9()
-    move_p10()
-    move_to_p1()
+move_p1()
+move_p2()
+
+#while True:
+#    move_p1()
+#    move_p2()
+#   #move_p3()
+#   #move_p4()
+#   #move_p5()
+#   #move_p6()
+#   #move_p7()
+#   #move_p8()
+#   #move_p9()
+#   #move_p10()
+#   #move_to_p1()
 
 close_canvas()
