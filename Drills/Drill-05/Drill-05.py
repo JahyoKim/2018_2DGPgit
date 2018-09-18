@@ -160,3 +160,5 @@ while True:
     move_to_p1()
 
 close_canvas()
+
+
