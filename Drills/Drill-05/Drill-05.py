@@ -11,7 +11,7 @@ def move_from_center_to_right():
         clear_canvas_now()
         grass.draw_now(400,30)
         character.draw_now(x, y)
-        x += 2
+        x += 5
         delay(0.01)
 
 def move_up():
@@ -20,21 +20,32 @@ def move_up():
         clear_canvas_now()
         grass.draw_now(400,30)
         character.draw_now(x, y)
-        y += 2
+        y += 5
         delay(0.01)
-    pass
 
 def move_left():
-    pass
+    x, y = 800, 600-50
+    while 0 < x:
+        clear_canvas_now()
+        grass.draw_now(400, 30)
+        character.draw_now(x, y)
+        x -= 5
+        delay(0.01)
 
 def move_down():
-    pass
+    x, y = 0, 600
+    while 90 < y:
+        clear_canvas_now()
+        grass.draw_now(400, 30)
+        character.draw_now(x, y)
+        y -= 5
+        delay(0.01)
 
 def move_left_to_center():
     pass
 
 def make_rectangle():
-    # move_from_center_to_right() # 이미 검증이 끝난 함수니까 테스트시간을 줄이기위해 잠깐 주석처리해줌
+    move_from_center_to_right()
     move_up()
     move_left()
     move_down()
