@@ -4,6 +4,7 @@ open_canvas()
 
 grass = load_image('grass.png')
 character = load_image('character.png')
+character_left = load_image('character_left.png')
 
 # 경로좌표: (203, 535), (132, 243), (535, 470), (477, 203), (715, 136), (316, 225),
 #               (510, 92),(692, 518), (682, 336), (712, 349)
@@ -22,7 +23,7 @@ def move_p2(): #(132, 243)
     while 132 <= x and 243 <= y:
         clear_canvas_now()
         grass.draw_now(400, 30)
-        character.draw_now(x, y)
+        character_left.draw_now(x, y)
         x -= moveX
         y -= moveY
         delay(0.05)
@@ -49,7 +50,7 @@ def move_p4(): #(477, 203)
     while 477 <= x and 203 <= y:
         clear_canvas_now()
         grass.draw_now(400, 30)
-        character.draw_now(x, y)
+        character_left.draw_now(x, y)
         x -= moveX
         y -= moveY
         delay(0.05)
@@ -75,7 +76,7 @@ def move_p6(): #(316, 225)
     while 316 <= x and y <= 225:
         clear_canvas_now()
         grass.draw_now(400, 30)
-        character.draw_now(x, y)
+        character_left.draw_now(x, y)
         x -= moveX
         y += moveY
         delay(0.05)
@@ -114,7 +115,7 @@ def move_p9(): #(682, 336)
     while 682 <= x and 336 <= y:
         clear_canvas_now()
         grass.draw_now(400, 30)
-        character.draw_now(x, y)
+        character_left.draw_now(x, y)
         x -= moveX
         y -= moveY
         delay(0.05)
@@ -140,7 +141,7 @@ def move_to_p1(): #(203, 535)
     while 203 <= x and y <= 535:
         clear_canvas_now()
         grass.draw_now(400, 30)
-        character.draw_now(x, y)
+        character_left.draw_now(x, y)
         x -= moveX
         y += moveY
         delay(0.05)
