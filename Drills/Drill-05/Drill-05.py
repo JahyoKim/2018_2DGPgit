@@ -9,7 +9,10 @@ character = load_image('character.png')
 #               (510, 92),(692, 518), (682, 336), (712, 349)
 
 def move_p1():
-    pass
+    x, y = 203, 535
+    clear_canvas_now()
+    grass.draw_now(400,30)
+    character.draw_now(x, y)
 
 def move_p2():
     pass
@@ -54,5 +57,4 @@ while True:
     move_p10()
     move_to_p1()
 
-    
 close_canvas()
