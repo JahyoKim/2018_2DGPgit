@@ -79,3 +79,4 @@ while running:
     delay(0.05)
 
 close_canvas()
+
