@@ -28,9 +28,11 @@ class Ball:
         self.smallBall = load_image('ball21x21.png')
         self.bigBall = load_image('ball41x41.png')
         self.type = random.randint(0,1)
-
+        self.velocity = random.randint(50,100) * 0.1
     def update(self):
-        self.y -= 5
+        self.y -= 1 * self.velocity
+        if self.y <= 80:
+            self.velocity = 0
 
     def draw(self):
         if self.type % 2 == 0:
@@ -52,7 +54,9 @@ open_canvas()
 
 grass = Grass()
 boy = Boy()
+ball = Ball()
 team = [Boy() for i in range(11)]
+Balls = [Ball() for i in range(20)]
 
 running = True
 
@@ -61,10 +65,14 @@ while running:
 
     for boy in team:
         boy.update()
+    for ball in Balls:
+        ball.update()
     clear_canvas()
     for boy in team:
         boy.draw()
-        grass.draw()
+    for ball in Balls:
+        ball.draw()
+    grass.draw()
     boy.draw()
     update_canvas()
 
