@@ -13,4 +13,10 @@ class Background:
     def update(self,frame_time):
         self.left = (self.left + frame_time * self.speed) % self.image.w
 
-    
+    def handle_event(self,event):
+        if event.type == SDL_KEYDOWN:
+            if event.key == SDLK_LEFT: self.speed -= Background.SCROLL_SPEED_PPS
+            elif event.key == SDLK_RIGHT: self.speed += Background.SCROLL_SPEED_PPS
+        if event.type == SDL_KEYUP:
+            if event.key == SDLK_LEFT: self.speed += Background.SCROLL_SPEED_PPS
+            elif event.key == SDLK_RIGHT: self.speed -= Background.SCROLL_SPEED_PPS
