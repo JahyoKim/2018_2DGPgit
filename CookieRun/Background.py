@@ -20,3 +20,5 @@ class Background:
         if event.type == SDL_KEYUP:
             if event.key == SDLK_LEFT: self.speed += Background.SCROLL_SPEED_PPS
             elif event.key == SDLK_RIGHT: self.speed -= Background.SCROLL_SPEED_PPS
+
+            
