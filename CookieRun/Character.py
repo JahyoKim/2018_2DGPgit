@@ -38,3 +38,4 @@ while running:
 
 
 close_canvas()
+
