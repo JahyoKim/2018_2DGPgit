@@ -57,21 +57,26 @@ boy = Boy()
 ball = Ball()
 team = [Boy() for i in range(11)]
 Balls = [Ball() for i in range(20)]
+world = Balls + team
 
 running = True
 
 while running:
     handle_events()
 
-    for boy in team:
-        boy.update()
-    for ball in Balls:
-        ball.update()
+    #for boy in team:
+    #    boy.update()
+    #for ball in Balls:
+    #    ball.update()
     clear_canvas()
-    for boy in team:
-        boy.draw()
-    for ball in Balls:
-        ball.draw()
+    #for boy in team:
+    #    boy.draw()
+    #for ball in Balls:
+    #    ball.draw()
+    for thing in world:
+        thing.update()
+    for thing in world:
+        thing.draw()
     grass.draw()
     boy.draw()
     update_canvas()
