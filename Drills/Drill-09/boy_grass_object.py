@@ -64,17 +64,17 @@ running = True
 while running:
     handle_events()
 
-    #for boy in team:
-    #    boy.update()
-    #for ball in Balls:
-    #    ball.update()
+    for boy in team:
+        boy.update()
+    for ball in Balls:
+        ball.update()
     clear_canvas()
     #for boy in team:
     #    boy.draw()
     #for ball in Balls:
     #    ball.draw()
-    for thing in world:
-        thing.update()
+    #for thing in world:
+    #    thing.update()
     for thing in world:
         thing.draw()
     grass.draw()
