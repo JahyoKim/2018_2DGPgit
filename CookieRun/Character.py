@@ -50,6 +50,8 @@ class Jungle:
         elif self.state == "slide":
             self.slide.clip_draw(self.frame_2 * 97, 0, 96, 40, self.x, self.y)
 
+
+
 open_canvas()
 jungle = Jungle()
 running = True
