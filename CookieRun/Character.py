@@ -25,21 +25,7 @@ class Jungle:
         if self.frame_2 == 2:
             self.frame_2 = 0
 
-        if self.state == "jump" and self.jump_state == "up":
-            if self.y >= 260:
-                self.jump_state = "down"
-            self.y += 10
 
-        if self.state == "jump" and self.jump_state == "down":
-            if self.y >= 200:
-                self.y -= 10
-
-        if self.state == "jump" and self.y == 200:
-            self.state = "run"
-            self.jump_state = "up"
-
-        if self.state == "slide":
-            self.y = 190
 
 
     def draw(self):
