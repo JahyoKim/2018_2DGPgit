@@ -41,7 +41,6 @@ class Jungle:
         if self.state == "slide":
             self.y = 190
 
-
     def draw(self):
         if self.state == "run":
             self.run.clip_draw(self.frame * 100, 0, 100, 62, self.x, self.y)
