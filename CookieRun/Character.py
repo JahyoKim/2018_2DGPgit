@@ -56,6 +56,8 @@ open_canvas()
 jungle = Jungle()
 running = True
 
+
+
 while running:
     handle_events()
     jungle.update()
