@@ -17,6 +17,7 @@ class Jungle:
             self.jump = load_image('jungle_jump.png')
             self.slide = load_image('jungle_slide.png')
 
+
     def update(self):
         self.frame +=1
         if self.frame == 4:
@@ -52,11 +53,19 @@ class Jungle:
 
 
 
+def handle_events():
+    global running
+
+    events = get_events()
+    for event in events:
+        if event.type == SDL_QUIT:
+            running = False
+
+
+
 open_canvas()
 jungle = Jungle()
 running = True
-
-
 
 while running:
     handle_events()
