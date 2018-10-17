@@ -60,7 +60,18 @@ def handle_events():
     for event in events:
         if event.type == SDL_QUIT:
             running = False
-
+        else:
+            if event.type == SDL_KEYDOWN and event.key == SDLK_z:
+                jungle.state = "jump"
+            elif event.type == SDL_KEYDOWN and event.key == SDLK_x:
+                if jungle.state != "jump":
+                    jungle.state = "slide"
+            elif event.type == SDL_KEYUP and event.key == SDLK_x:
+                if jungle.state == "slide":
+                    jungle.state = "run"
+                    jungle.y = 200
+            elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
+                running = False
 
 
 open_canvas()
