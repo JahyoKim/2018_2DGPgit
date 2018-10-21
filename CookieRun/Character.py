@@ -73,6 +73,7 @@ def handle_events():
                 running = False
 
 
+
 open_canvas()
 jungle = Jungle()
 running = True
