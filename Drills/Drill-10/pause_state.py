@@ -41,4 +41,3 @@ def draw():
     delay(0.05)
     update_canvas()
 
-    
