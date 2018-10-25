@@ -117,7 +117,8 @@ class SleepState:
 class DashState:
     @staticmethod
     def enter(boy, event):
-       pass
+        if boy.timer < 0:
+            boy.timer = 100
 
     @staticmethod
     def exit(boy, event):
@@ -144,13 +145,14 @@ class DashState:
 next_state_table = {
     IdleState: {RIGHT_UP: RunState, LEFT_UP: RunState,
                 RIGHT_DOWN: RunState, LEFT_DOWN: RunState,
-            SLEEP_TIMER: SleepState, SPACE : IdleState},
+                SLEEP_TIMER: SleepState, SPACE : IdleState},
     RunState: {RIGHT_UP: IdleState, LEFT_UP: IdleState,
                 LEFT_DOWN: IdleState, RIGHT_DOWN: IdleState,
-                SPACE : RunState},
+                SPACE : RunState, SHIFT_DOWN: DashState,
+                SHIFT_UP:RunState},
     SleepState: {LEFT_DOWN: RunState, RIGHT_DOWN: RunState,
                  LEFT_UP: RunState, RIGHT_UP: RunState,
-                 SPACE:IdleState}
+                 SPACE:IdleState},
     DashState: {RIGHT_UP: IdleState, LEFT_UP: IdleState,
                 LEFT_DOWN: IdleState, RIGHT_DOWN: IdleState,
                 SHIFT_UP : RunState, SHIFT_DOWN: DashState}
