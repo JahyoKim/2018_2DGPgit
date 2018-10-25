@@ -151,6 +151,9 @@ next_state_table = {
     SleepState: {LEFT_DOWN: RunState, RIGHT_DOWN: RunState,
                  LEFT_UP: RunState, RIGHT_UP: RunState,
                  SPACE:IdleState}
+    DashState: {RIGHT_UP: IdleState, LEFT_UP: IdleState,
+                LEFT_DOWN: IdleState, RIGHT_DOWN: IdleState,
+                SHIFT_UP : RunState, SHIFT_DOWN: DashState}
 }
 
 class Boy:
