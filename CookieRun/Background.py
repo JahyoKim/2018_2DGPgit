@@ -9,7 +9,7 @@ class Background:
     RUN_SPEED_MPS = (RUN_SPEED_MPM / 60.0)
     RUN_SPEED_PPS = (RUN_SPEED_MPS * PIXEL_PER_METER)
 
-    
+
     def __init__(self):
         self.background = load_image('background.png')
 
