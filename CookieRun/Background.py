@@ -11,7 +11,7 @@ class Background:
 
 
     def __init__(self):
-        self.background = load_image('background.png')
+        self.background = load_image('sprite\\background.png')
 
     def draw(self):
         x = int(self.left)

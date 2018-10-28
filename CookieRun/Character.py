@@ -13,9 +13,9 @@ class Jungle:
         self.slide_state = "slide"
 
         if self.image_init == None:
-            self.run = load_image('jungle_run.png')
-            self.jump = load_image('jungle_jump.png')
-            self.slide = load_image('jungle_slide.png')
+            self.run = load_image('sprite\\jungle_run.png')
+            self.jump = load_image('sprite\\jungle_jump.png')
+            self.slide = load_image('sprite\\jungle_slide.png')
 
 
     def update(self):
