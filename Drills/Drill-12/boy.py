@@ -131,7 +131,28 @@ class SleepState:
 
         time = get_time() - Ghost.time
 
-        
+        if time < 1:
+            boy.image.opacify(random.random())
+            if Ghost.dir == 1:
+                boy.image.clip_composite_draw(int(boy.frame) * 100, 300, 100, 100,
+                                              3.141592 / 2 - (3.141592 / 2 * time), '', boy.x - (2 - time) * 25,
+                                              boy.y - (1 - time) * 25, 100, 100)
+            elif Ghost.dir == -1:
+                boy.image.clip_composite_draw(int(boy.frame) * 100, 200, 100, 100,
+                                              -(3.141592 / 2 - (3.141592 / 2 * time)), '', boy.x - (0 - time) * 25,
+                                              boy.y - (1 - time) * 25, 100, 100)
+            boy.image.opacify(1)
+
+        else:
+            boy.image.opacify(random.random())
+            if Ghost.dir == 1:
+                boy.image.clip_draw(int(boy.frame) * 100, 300, 100, 100,
+                                    boy.x + math.cos(3.141592 * Ghost.radian / 180) * 100,
+                                    boy.y + math.sin(3.141592 * Ghost.radian / 180) * 100)
+            elif Ghost.dir == -1:
+                boy.image.clip_draw(int(boy.frame) * 100, 200, 100, 100,
+                                    boy.x + math.cos(3.141592 * Ghost.radian / 180) * 100)
+            boy.image.opacify(1)
 
 
 
