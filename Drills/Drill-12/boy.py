@@ -47,7 +47,7 @@ class IdleState:
             boy.velocity -= RUN_SPEED_PPS
         elif event == LEFT_UP:
             boy.velocity += RUN_SPEED_PPS
-        boy.timer = 3
+        boy.timer = get_time()
 
     @staticmethod
     def exit(boy, event):
@@ -58,8 +58,8 @@ class IdleState:
     @staticmethod
     def do(boy):
         boy.frame = (boy.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 8
-        boy.timer -= game_framework.frame_time
-        if boy.timer <= 0:
+        current_time = get_time()
+        if current_time - boy.timer >= 3:
             boy.add_event(SLEEP_TIMER)
 
     @staticmethod
@@ -108,6 +108,9 @@ class SleepState:
     @staticmethod
     def enter(boy, event):
         boy.frame = 0
+        Ghost.radian = -90
+        Ghost.dir = boy.dir
+        Ghost.time = get_time()
 
     @staticmethod
     def exit(boy, event):
@@ -116,6 +119,8 @@ class SleepState:
     @staticmethod
     def do(boy):
         boy.frame = (boy.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 8
+        current_time = (get_time() - Ghost.time) % 1
+        Ghost.radian = -90 + current_time * 720
 
     @staticmethod
     def draw(boy):
@@ -123,6 +128,11 @@ class SleepState:
             boy.image.clip_composite_draw(int(boy.frame) * 100, 300, 100, 100, 3.141592 / 2, '', boy.x - 25, boy.y - 25, 100, 100)
         else:
             boy.image.clip_composite_draw(int(boy.frame) * 100, 200, 100, 100, -3.141592 / 2, '', boy.x + 25, boy.y - 25, 100, 100)
+
+        time = get_time() - Ghost.time
+
+        
+
 
 
 class GhostState:
@@ -207,6 +217,9 @@ class Ghost:
         self.dir = 1
         self.velocity = 0
         self.frame = 0
+        self.time = 0
+        self.x, self.y = 0, 0
+        self.radian = - 90
         self.event_que = []
         self.cur_state = IdleState
         self.cur_state.enter(self, None)
