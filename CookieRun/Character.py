@@ -1,4 +1,5 @@
 from pico2d import *
+import Background
 
 class Jungle:
     image_init = None
@@ -76,14 +77,18 @@ def handle_events():
 
 open_canvas()
 jungle = Jungle()
+#background = Background()
+
 running = True
 
 while running:
     handle_events()
     jungle.update()
+    Background.update()
 
     clear_canvas()
     jungle.draw()
+    Background.draw()
     update_canvas()
     delay(0.05)
 
