@@ -1,11 +1,11 @@
 from pico2d import *
-import Background
+#import Background
 
 class Jungle:
     image_init = None
 
     def __init__(self):
-        self.x = 100
+        self.x = 200
         self.y = 200
         self.frame = 0
         self.frame_2 = 0
@@ -52,6 +52,25 @@ class Jungle:
         elif self.state == "slide":
             self.slide.clip_draw(self.frame_2 * 97, 0, 96, 40, self.x, self.y)
 
+class Jelly:
+    image_init = None
+
+    def __init__(self):
+        self.x = 200
+        self.y = 300
+        self.frame = 0
+
+        if self.image_init == None:
+            self.life_jelly = load_image('sprite\\life_jelly.png')
+
+    def update(self):
+        self.frame +=1
+        if self.frame == 2:
+            self.frame = 0
+
+    def draw(self):
+        self.life_jelly.clip_draw(self.frame * 72, 0, 72, 70, self.x, self.y)
+
 
 def handle_events():
     global running
@@ -77,6 +96,7 @@ def handle_events():
 
 open_canvas()
 jungle = Jungle()
+jelly = Jelly()
 #background = Background()
 
 running = True
@@ -84,11 +104,13 @@ running = True
 while running:
     handle_events()
     jungle.update()
-    Background.update()
+    #background.update()
+    jelly.update()
 
     clear_canvas()
     jungle.draw()
-    Background.draw()
+    #background.draw()
+    jelly.draw()
     update_canvas()
     delay(0.05)
 
