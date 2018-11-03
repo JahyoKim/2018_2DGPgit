@@ -72,6 +72,28 @@ class Jelly:
         self.life_jelly.clip_draw(self.frame * 72, 0, 72, 70, self.x, self.y)
 
 
+
+class Hurdle:
+    image_init = None
+
+    def __init__(self):
+        self.x = 200
+        self.y = 400
+        self.frame = 0
+
+        if self.image_init == None:
+            self.hurdle1_1 = load_image('sprite\\hurdle1-1.png')
+
+    def update(self):
+        pass
+
+    def draw(self):
+        #self.draw(self.x, self.y)
+        pass
+
+
+
+
 def handle_events():
     global running
 
@@ -97,6 +119,7 @@ def handle_events():
 open_canvas()
 jungle = Jungle()
 jelly = Jelly()
+hurdle = Hurdle()
 #background = Background()
 
 running = True
@@ -111,6 +134,7 @@ while running:
     jungle.draw()
     #background.draw()
     jelly.draw()
+    hurdle.draw()
     update_canvas()
     delay(0.05)
 
