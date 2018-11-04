@@ -19,6 +19,7 @@ class Jungle:
             self.slide = load_image('sprite\\jungle_slide.png')
 
 
+
     def update(self):
         self.frame +=1
         if self.frame == 4:
