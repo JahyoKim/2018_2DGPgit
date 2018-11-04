@@ -10,12 +10,12 @@ logo_time = 0.0
 
 
 def enter():
-    global image, dev, kakao, title
+    global image, dev, title
     image = load_image('image\\kpu_credit.png')
     dev = load_image('image\\title_CI.png')
 
 def exit():
-    global image, dev, kakao
+    global image, dev
     del(image)
     del(dev)
     close_canvas()
@@ -26,7 +26,7 @@ def update():
 
     if (logo_time > 3.0):
         logo_time = 0
-        game_framework.push_state(title_state)
+        game_framework.push_state(title)
     delay(0.01)
     logo_time += 0.01
 
