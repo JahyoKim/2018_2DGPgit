@@ -104,7 +104,27 @@ class Hp:
 
 
 class Background:
-    pass
+    image_init = None
+
+
+    def __init__(self):
+        self.frame = 1
+        self.x = 400
+        self.y = 300
+
+        if Background.image_init == None:
+            self.background = load_image('sprite\\background.png')
+            self.tile = load_image('sprite\\stage1-0.png')
+
+    def draw(self):
+        self.background.draw(self.x, self.y, 800, 600)
+        self.tile.draw(self.x, self.y, 800, 600)
+
+    def update(self):
+        pass
+
+
+
 
 
 def handle_events():
@@ -129,24 +149,24 @@ def handle_events():
 
 
 
-open_canvas()
+open_canvas(800,600)
 jungle = Jungle()
 jelly = Jelly()
 
 #hurdle = Hurdle()
-#background = Background()
+background = Background()
 
 running = True
 
 while running:
     handle_events()
+    background.update()
     jungle.update()
-    #background.update()
     jelly.update()
 
     clear_canvas()
+    background.draw()
     jungle.draw()
-    #background.draw()
     jelly.draw()
     #hurdle.draw()
     update_canvas()
