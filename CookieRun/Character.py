@@ -100,8 +100,11 @@ class Hp:
         frame = 0
 
     def update(self):
+        pass
 
 
+class Background:
+    pass
 
 
 def handle_events():
