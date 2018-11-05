@@ -143,7 +143,7 @@ def handle_events():
             elif event.type == SDL_KEYUP and event.key == SDLK_x:
                 if jungle.state == "slide":
                     jungle.state = "run"
-                    jungle.y = 200
+                    jungle.y = 180
             elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
                 running = False
 
