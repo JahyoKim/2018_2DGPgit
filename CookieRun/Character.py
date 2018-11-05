@@ -6,7 +6,7 @@ class Jungle:
 
     def __init__(self):
         self.x = 200
-        self.y = 200
+        self.y = 180
         self.frame = 0
         self.frame_2 = 0
         self.state = "run"
@@ -29,20 +29,20 @@ class Jungle:
             self.frame_2 = 0
 
         if self.state == "jump" and self.jump_state == "up":
-            if self.y >= 260:
+            if self.y >= 240:
                 self.jump_state = "down"
             self.y += 10
 
         if self.state == "jump" and self.jump_state == "down":
-            if self.y >= 200:
+            if self.y >= 180:
                 self.y -= 10
 
-        if self.state == "jump" and self.y == 200:
+        if self.state == "jump" and self.y == 180:
             self.state = "run"
             self.jump_state = "up"
 
         if self.state == "slide":
-            self.y = 190
+            self.y = 170
 
 
     def draw(self):
@@ -58,7 +58,7 @@ class Jelly:
 
     def __init__(self):
         self.x = 200
-        self.y = 300
+        self.y = 270
         self.frame = 0
 
         if self.image_init == None:
@@ -78,18 +78,18 @@ class Hurdle:
     image_init = None
 
     def __init__(self):
-        self.x = 200
-        self.y = 400
-        self.frame = 0
+        self.x = 300
+        self.y = 172
+        self.frame = 1
 
-        if self.image_init == None:
+        if Hurdle.image_init == None:
             self.hurdle1_1 = load_image('sprite\\hurdle1-1.png')
 
     def update(self):
         pass
 
     def draw(self):
-        #self.draw(self.x, self.y)
+        self.hurdle1_1.draw(self.x, self.y, 34, 50)
         pass
 
 
@@ -152,8 +152,7 @@ def handle_events():
 open_canvas(800,600)
 jungle = Jungle()
 jelly = Jelly()
-
-#hurdle = Hurdle()
+hurdle = Hurdle()
 background = Background()
 
 running = True
@@ -161,14 +160,14 @@ running = True
 while running:
     handle_events()
     background.update()
-    jungle.update()
     jelly.update()
+    jungle.update()
 
     clear_canvas()
     background.draw()
-    jungle.draw()
     jelly.draw()
-    #hurdle.draw()
+    hurdle.draw()
+    jungle.draw()
     update_canvas()
     delay(0.05)
 
