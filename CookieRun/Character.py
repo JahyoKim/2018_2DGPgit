@@ -94,6 +94,15 @@ class Hurdle:
 
 
 
+class Hp:
+    def __init__(self):
+        default_hp = 100
+        frame = 0
+
+    def update(self):
+
+
+
 
 def handle_events():
     global running
@@ -120,7 +129,8 @@ def handle_events():
 open_canvas()
 jungle = Jungle()
 jelly = Jelly()
-hurdle = Hurdle()
+
+#hurdle = Hurdle()
 #background = Background()
 
 running = True
@@ -135,7 +145,7 @@ while running:
     jungle.draw()
     #background.draw()
     jelly.draw()
-    hurdle.draw()
+    #hurdle.draw()
     update_canvas()
     delay(0.05)
 
