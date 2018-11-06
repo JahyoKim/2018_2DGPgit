@@ -1,7 +1,7 @@
 import random
 from pico2d import *
 from Character import *
-#from Background import *
+from Background import *
 import Background
 import game_framework
 import title_state
@@ -25,7 +25,7 @@ def collid(a, b):
     return True
 
 def enter():
-    global character, background, running, font
+    global background, character, running, font
     background = Background()
     character = Character()
     #font = load_font('image\\ENCR10B.TTF')
