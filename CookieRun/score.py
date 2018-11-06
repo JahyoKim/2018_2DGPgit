@@ -8,3 +8,5 @@ class Score:
 
     def stage2_score(self):
         self.score += 10
+
+        
