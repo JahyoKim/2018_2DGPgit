@@ -55,7 +55,7 @@ def resume():
 def update():
     global running, background, character
     handle_events()
-   
+
 
 def handle_events():
     global running, background
