@@ -55,10 +55,7 @@ def resume():
 def update():
     global running, background, character
     handle_events()
-    frame_time = get_frame_time()
-    background.update(frame_time)
-    character.update()
-
+   
 
 def handle_events():
     global running, background
