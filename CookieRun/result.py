@@ -3,6 +3,7 @@ from score import *
 
 import game_framework
 import main_state
+import main_state2
 
 
 name = "ResultState"
@@ -43,11 +44,13 @@ def draw():
     global font, score, ascore
     clear_canvas()
     result.draw(400, 300)
+    font.draw(290, 380, '%3.2d' % main_state2.ascore)
     update_canvas()
 
 def update():
     pass
-  
+    #print("Stage1 Clear Time : ", main_state.ascore + main_state2.ascore)
+
 
 def pause():
     pass
