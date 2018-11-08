@@ -1,8 +1,8 @@
 import random
 from pico2d import *
 from Character import *
-from Background import *
-
+#from Background import *
+import Background
 import game_framework
 import title_state
 
@@ -28,7 +28,7 @@ def enter():
     global character, background, running, font
     background = Background()
     character = Character()
-    font = load_font('image\\ENCR10B.TTF')
+    #font = load_font('image\\ENCR10B.TTF')
 
     running = True
 
