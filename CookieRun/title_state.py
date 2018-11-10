@@ -11,7 +11,7 @@ image = None
 
 def enter():
     global image
-    image = load_image('sprite\\title.png')
+    image = load_image('sprite\\title_1.jpg')
 
 
 def exit():
