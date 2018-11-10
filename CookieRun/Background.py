@@ -42,6 +42,7 @@ class Background:
         #self.image = load_image('sprite\\background.png')
 
 
+
     #def draw(self):
     #    x = int(self.left)
     #    w = min(self.image.w - x, self.screen_width)
