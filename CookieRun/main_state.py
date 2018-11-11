@@ -1,20 +1,16 @@
-import random
 from pico2d import *
 from Character import *
 from Background import *
-import Background
+
 import game_framework
 import title_state
-from score import *
+
 
 running = None
 current_time = 0.0
 character = None
-Background = None
-jellysound = None
-hpjellysound = None
-score = None
-ascore = 0
+background = None
+
 
 name = "MainState"
 
@@ -30,12 +26,10 @@ def collid(a, b):
     return True
 
 def enter():
-    global background, character, running, font
-    background = Background()
+    global background, character, running
+   # background = Background()
     character = Character()
-    jellysound = Jelly()
-    hpjellysound = Hp()
-    score = Score()
+
     #font = load_font('image\\ENCR10B.TTF')
 
     running = True

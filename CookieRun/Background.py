@@ -1,11 +1,10 @@
 from pico2d import *
 
-name = "Background"
-
 class Background:
+    image_init = None
 
     PIXEL_PER_METER = (10.0 / 0.3)
-    SCROLL_SPEED_KMPH = 20.0
+    SCROLL_SPEED_KMPH = 30.0
     SCROLL_SPEED_MPM = (SCROLL_SPEED_KMPH * 1000.0 / 60.0)
     SCROLL_SPEED_MPS = (SCROLL_SPEED_MPM / 60.0)
     SCROLL_SPEED_PPS = (SCROLL_SPEED_MPS * PIXEL_PER_METER)
@@ -16,6 +15,14 @@ class Background:
         self.left = 0
         self.screen_width = w
         self.screen_height = h
+
+        if Background.image_init == None:
+            self.stage1 = load_image('image\\stage1-1.png')
+            self.stage2 = load_image('image\\stage1-1.png')
+            self.stage3 = load_image('image\\stage1-rot.png')
+            self.bgm = load_music('Sound\\stage1.mp3')
+            self.bgm.set_volume(64)
+            self.bgm.repeat_play()
 
 
     def draw(self):
