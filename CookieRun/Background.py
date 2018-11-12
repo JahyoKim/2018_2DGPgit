@@ -9,20 +9,23 @@ class Background:
     SCROLL_SPEED_MPS = (SCROLL_SPEED_MPM / 60.0)
     SCROLL_SPEED_PPS = (SCROLL_SPEED_MPS * PIXEL_PER_METER)
 
-    def __init__(self, w, h):
-        self.image = load_image('sprite\\background.png')
-        self.speed = 0
-        self.left = 0
-        self.screen_width = w
-        self.screen_height = h
+    def __init__(self):
+        self.frame = 1
+        self.speed = 5
+        self.distance = 0
+        self.count = 0
 
         if Background.image_init == None:
-            self.stage1 = load_image('image\\stage1-1.png')
-            self.stage2 = load_image('image\\stage1-1.png')
-            self.stage3 = load_image('image\\stage1-rot.png')
+            self.stage1 = load_image('sprite\\background.png')
+            self.stage2 = load_image('sprite\\background.png')
+            self.stage3 = load_image('sprite\\background.png')
             self.bgm = load_music('Sound\\stage1.mp3')
             self.bgm.set_volume(64)
             self.bgm.repeat_play()
+
+        if Background.ChangeState == None:
+            self.ChangeState_sound = load_wav('Sound\ChangeState.wav')
+            self.ChangeState_sound.set_volume(64)
 
 
     def draw(self):
