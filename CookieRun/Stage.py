@@ -85,4 +85,6 @@ class Stage2:
     def draw(self):
         self.stage1.draw(self.stage1_x, self.stage1_y)
 
+        
+
 
