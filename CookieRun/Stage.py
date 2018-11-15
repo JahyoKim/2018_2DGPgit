@@ -14,12 +14,15 @@ class Stage:
     def __init__(self):
         self.stage1_x = 400
         self.stage1_y = 400
+        self.stage2_x = 1200
+        self.stage2_y = 400
         self.speed = 5
         self.distance = 0
         self.count = 0
 
         if self.image_init == None:
             self.stage1 = load_image('image\\stage1-0.png')
+            self.stage2 = load_image('image\\stage1-0.png')
 
     def update(self, frame_time):
         if Stage.RUN_SPEED_PPS * frame_time > 7:
@@ -28,6 +31,11 @@ class Stage:
             self.distance = Stage.RUN_SPEED_PPS * frame_time
 
         self.stage1_x -= self.distance
+        self.stage2_x -= self.distance
+
+        if self.stage2_x < - 400:
+            self.count += 1
+            self.stage2_x = 1190
 
         if self.stage1_x < - 400:
             self.count += 1
@@ -36,10 +44,13 @@ class Stage:
         if self.count >= 7:
             self.stage1_x = 400
             self.stage1_y = 400
+            self.stage2_x = 400
+            self.stage2_y = 400
 
 
     def draw(self):
         self.stage1.draw(self.stage1_x, self.stage1_y)
+        self.stage2.draw(self.stage2_x, self.stage2_y)
 
 
 class Stage2:
@@ -56,6 +67,8 @@ class Stage2:
     def __init__(self):
         self.stage1_x = 400
         self.stage1_y = 400
+        self.stage2_x = 1200
+        self.stage2_y = 400
         self.speed = 5
         self.distance = 0
         self.count = 0
@@ -71,7 +84,11 @@ class Stage2:
             self.distance = Stage.RUN_SPEED_PPS * frame_time
 
         self.stage1_x -= self.distance
+        self.stage2_x -= self.distance
 
+        if self.stage2_x < - 400:
+            self.count += 1
+            self.stage2_x = 1190
 
         if self.stage1_x < - 400:
             self.count += 1
@@ -80,11 +97,11 @@ class Stage2:
         if self.count >= 7:
             self.stage1_x = 400
             self.stage1_y = 400
+            self.stage2_x = 400
+            self.stage2_y = 400
 
 
     def draw(self):
         self.stage1.draw(self.stage1_x, self.stage1_y)
-
-
-
+        self.stage2.draw(self.stage2_x, self.stage2_y)
 
