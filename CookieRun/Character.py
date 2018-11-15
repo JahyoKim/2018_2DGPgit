@@ -1,7 +1,7 @@
 from pico2d import *
 #import Background
 
-class Jungle:
+class Character:
     image_init = None
 
     def __init__(self):
@@ -149,30 +149,30 @@ def handle_events():
 
 
 
-open_canvas(800,600)
-jungle = Jungle()
-jelly = Jelly()
-hurdle = Hurdle()
-background = Background()
-
-running = True
-
-while running:
-    handle_events()
-    background.update()
-    jelly.update()
-    jungle.update()
-
-    clear_canvas()
-    background.draw()
-    jelly.draw()
-    hurdle.draw()
-    jungle.draw()
-    update_canvas()
-    delay(0.05)
-
-
-close_canvas()
-
-
+#open_canvas(800,600)
+#jungle = Jungle()
+#jelly = Jelly()
+#hurdle = Hurdle()
+#background = Background()
+#
+#running = True
+#
+#while running:
+#    handle_events()
+#    background.update()
+#    jelly.update()
+#    jungle.update()
+#
+#    clear_canvas()
+#    background.draw()
+#    jelly.draw()
+#    hurdle.draw()
+#    jungle.draw()
+#    update_canvas()
+#    delay(0.05)
+#
+#
+#close_canvas()
+#
+#
 

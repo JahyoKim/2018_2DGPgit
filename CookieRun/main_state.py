@@ -1,25 +1,19 @@
 import random
-import json
-import os
-
 from pico2d import *
-import game_framework
-import game_world
+from Character import *
+from Background import *
 
-from boy import Boy
-from grass import Grass
-from ball import Ball, BigBall
+import game_framework
+import title_state
+
+running = None
+current_time = 0.0
+character = None
+Background = None
 
 name = "MainState"
 
-boy = None
-grass = None
-balls = []
-big_balls = []
-
-
-def collide(a, b):
-    # fill here
+def collid(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
     left_b, bottom_b, right_b, top_b = b.get_bb()
 
@@ -30,28 +24,26 @@ def collide(a, b):
 
     return True
 
-
-
-
 def enter():
-    global boy
-    boy = Boy()
-    game_world.add_object(boy, 1)
+    global character, background, running, font
+    background = Background()
+    character = Character()
+    font = load_font('image\\ENCR10B.TTF')
 
-    global grass
-    grass = Grass()
-    game_world.add_object(grass, 0)
+    running = True
 
-    # fill here
-    global balls
-    balls = [Ball() for i in range(10)] + [BigBall() for i in range(10)]
-    game_world.add_objects(balls, 1)
+def get_frame_time():
+    global current_time
 
-
-
+    frame_time = get_time() - current_time
+    current_time += frame_time
+    return frame_time
 
 def exit():
-    game_world.clear()
+    global character, background, running
+    del(character)
+    del(background)
+
 
 def pause():
     pass
@@ -60,40 +52,55 @@ def pause():
 def resume():
     pass
 
+def update():
+    global running, background, character
+    handle_events()
+    frame_time = get_frame_time()
+    background.update(frame_time)
+    character.update()
+
 
 def handle_events():
-    events = get_events()
-    for event in events:
-        if event.type == SDL_QUIT:
-            game_framework.quit()
-        elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
-                game_framework.quit()
-        else:
-            boy.handle_event(event)
-
-
-def update():
-    for game_object in game_world.all_objects():
-        game_object.update()
-    for ball in balls:
-        if collide(boy, ball):
-            balls.remove(ball)
-            game_world.remove_object(ball)
-    for ball in balls:
-        if collide(grass, ball):
-            ball.stop()
-
-    delay(0.2)
-
+    pass
+#    global running, backstage
+#
+#    if backstage.frame >= 8:
+#        #backstage.ChangeState_sound.play()
+#        game_framework.change_state(main_state2)
+#
+#
+#    events = get_events()
+#    for event in events:
+#        if event.type == SDL_QUIT:
+#            running = False
+#        #elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
+#         #   running = False
+#        else:
+#
+#            if event.type == SDL_KEYDOWN and event.key == SDLK_z:
+#                character.jump_sound.play()
+#                character.state = "jump"
+#            elif event.type == SDL_KEYDOWN and event.key == SDLK_x:
+#                character.slide_sound.play()
+#                character.state = "slide"
+#            elif event.type == SDL_KEYUP and event.key == SDLK_x:
+#                character.state = "run"
+#                character.y = 240
+#            elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
+#                game_framework.change_state(title_state)
+#            elif event.type == SDL_KEYDOWN and event.key == SDLK_2:
+#                game_framework.change_state(main_state2)
+#            elif event.type == SDL_KEYDOWN and event.key == SDLK_3:
+#                game_framework.change_state(result)
 
 def draw():
+    global background, character, running
     clear_canvas()
-    for game_object in game_world.all_objects():
-        game_object.draw()
+    background.draw()
+
+    character.draw()
+
+    delay(0.04)
     update_canvas()
 
-
-
-
-
-
+#    close_canvas()

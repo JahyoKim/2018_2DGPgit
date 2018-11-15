@@ -161,7 +161,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="776" />
     <option name="width" value="1153" />
     <option name="height" value="1038" />
@@ -202,7 +202,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Character">
+  <component name="RunManager" selected="Python.mygame">
     <configuration name="Character" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CookieRun" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -251,8 +251,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Character" />
         <item itemvalue="Python.mygame" />
+        <item itemvalue="Python.Character" />
       </list>
     </recent_temporary>
   </component>
