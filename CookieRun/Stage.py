@@ -105,3 +105,5 @@ class Stage2:
         self.stage1.draw(self.stage1_x, self.stage1_y)
         self.stage2.draw(self.stage2_x, self.stage2_y)
 
+
+
