@@ -6,6 +6,5 @@ class Score:
     def stage1_socre(self):
         self.score += 5
 
-    def stage2_score(self):
-        self.score += 10
+
 
