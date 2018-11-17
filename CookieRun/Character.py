@@ -1,5 +1,5 @@
 from pico2d import *
-#import Background
+
 
 class Character:
     image_init = None
