@@ -11,8 +11,8 @@ logo_time = 0.0
 
 def enter():
     global image, dev, title
-    image = load_image('image\\kpu_credit.png')
-    dev = load_image('image\\title_CI.png')
+    image = load_image('sprite\\kpu_credit.png')
+    dev = load_image('sprite\\title_dev.png')
 
 def exit():
     global image, dev
@@ -33,9 +33,9 @@ def update():
 def draw():
     global image, dev
     clear_canvas()
-    image.draw(800,600)
+    image.draw(400,300)
     if(logo_time > 1.0):
-        dev.draw(800, 600)
+        dev.draw(400, 300)
     update_canvas()
 
 def handle_events():
