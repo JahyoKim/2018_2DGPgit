@@ -63,11 +63,6 @@ def update():
 def handle_events():
     global running, background
 
-    if background.frame >= 8:
-        #backstage.ChangeState_sound.play()
-        #game_framework.change_state(main_state2)
-
-
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:

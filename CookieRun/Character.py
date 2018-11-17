@@ -103,52 +103,6 @@ class Hp:
         pass
 
 
-class Background:
-    image_init = None
-
-
-    def __init__(self):
-        self.frame = 1
-        self.x = 400
-        self.y = 300
-
-        if Background.image_init == None:
-            self.background = load_image('sprite\\background.png')
-            self.tile = load_image('sprite\\stage1-0.png')
-
-    def draw(self):
-        self.background.draw(self.x, self.y, 800, 600)
-        self.tile.draw(self.x, self.y, 800, 600)
-
-    def update(self):
-        pass
-
-
-
-
-
-def handle_events():
-    global running
-
-    events = get_events()
-    for event in events:
-        if event.type == SDL_QUIT:
-            running = False
-        else:
-            if event.type == SDL_KEYDOWN and event.key == SDLK_z:
-                jungle.state = "jump"
-            elif event.type == SDL_KEYDOWN and event.key == SDLK_x:
-                if jungle.state != "jump":
-                    jungle.state = "slide"
-            elif event.type == SDL_KEYUP and event.key == SDLK_x:
-                if jungle.state == "slide":
-                    jungle.state = "run"
-                    jungle.y = 180
-            elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
-                running = False
-
-
-
 #open_canvas(800,600)
 #jungle = Jungle()
 #jelly = Jelly()
