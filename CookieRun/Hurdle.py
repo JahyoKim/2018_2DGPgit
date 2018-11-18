@@ -12,6 +12,18 @@ hurdle_data_file2.close()
 
 
 
+
+hurdle_data_file3 = open('MapData\\stage2-1', 'r')
+hurdle_data3 = json.load(hurdle_data_file3)
+hurdle_data_file3.close()
+
+hurdle_data_file4 = open('MapData\\stage2-2', 'r')
+hurdle_data4 = json.load(hurdle_data_file4)
+hurdle_data_file4.close()
+
+
+
+
 class Hurdle1:
     global hurdle_data
     image = None
