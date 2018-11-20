@@ -11,7 +11,7 @@ hurdle_data2 = json.load(hurdle_data_file2)
 hurdle_data_file2.close()
 
 
-#########
+#
 
 hurdle_data_file3 = open('MapData\\stage2-1', 'r')
 hurdle_data3 = json.load(hurdle_data_file3)
