@@ -7,14 +7,32 @@ import game_framework
 import game_world
 
 from boy import Boy
-from background import FixedBackground as Background
-#from background import InfiniteBackground as Background
+from ground import Ground
+from zombie import Zombie
 
 
 name = "MainState"
 
 boy = None
-background = None
+zombie = None
+
+
+def collide(a, b):
+    # fill here
+    left_a, bottom_a, right_a, top_a = a.get_bb()
+    left_b, bottom_b, right_b, top_b = b.get_bb()
+
+    if left_a > right_b: return False
+    if right_a < left_b: return False
+    if top_a < bottom_b: return False
+    if bottom_a > top_b: return False
+
+    return True
+
+
+
+def get_boy():
+    return boy
 
 
 def enter():
@@ -22,13 +40,12 @@ def enter():
     boy = Boy()
     game_world.add_object(boy, 1)
 
-    global background
-    background = Background()
-    game_world.add_object(background, 0)
+    global zombie
+    zombie = Zombie()
+    game_world.add_object(zombie, 1)
 
-    background.set_center_object(boy)
-    boy.set_background(background)
-
+    ground = Ground()
+    game_world.add_object(ground, 0)
 
 def exit():
     game_world.clear()
