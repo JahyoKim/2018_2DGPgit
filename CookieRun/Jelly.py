@@ -10,7 +10,7 @@ hp_data_file = open('MapData\\hp', 'r')
 hp_data = json.load(hp_data_file)
 hp_data_file.close()
 
-################################################
+
 
 jelly_data_file2 = open('MapData\\jelly2', 'r')
 jelly_data2 = json.load(jelly_data_file2)
