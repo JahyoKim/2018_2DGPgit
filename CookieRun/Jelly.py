@@ -243,4 +243,3 @@ class Hp2:
     def draw(self):
         self.hp2.draw(self.x, self.y)
 
-        
