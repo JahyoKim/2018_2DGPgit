@@ -1,5 +1,6 @@
 import game_framework
 from pico2d import *
+from ball import Ball
 
 import game_world
 
@@ -61,37 +62,43 @@ class WalkingState:
 
     @staticmethod
     def exit(boy, event):
-        pass
+        if event == SPACE:
+            boy.fire_ball()
 
     @staticmethod
     def do(boy):
         boy.frame = (boy.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % FRAMES_PER_ACTION
         boy.x += boy.x_velocity * game_framework.frame_time
         boy.y += boy.y_velocity * game_framework.frame_time
-        boy.x = clamp(25, boy.x, 1280 - 25)
-        boy.y = clamp(25, boy.y, 1024 - 25)
+
+        boy.x = clamp(boy.y / 5.6, boy.x, boy.bg.w - boy.y / 5.6)
+        boy.y = clamp(75, boy.y, boy.bg.h - 30)
+
 
     @staticmethod
     def draw(boy):
+        cx, cy = boy.x - boy.bg.window_left, boy.y - boy.bg.window_bottom
+        #cx, cy = boy.canvas_width // 2, boy.canvas_height // 2
+
         if boy.x_velocity > 0:
-            boy.image.clip_draw(int(boy.frame) * 100, 100, 100, 100, boy.x, boy.y)
+            boy.image.clip_draw(int(boy.frame) * 100, 100, 100, 100, cx, cy)
             boy.dir = 1
         elif boy.x_velocity < 0:
-            boy.image.clip_draw(int(boy.frame) * 100, 0, 100, 100, boy.x, boy.y)
+            boy.image.clip_draw(int(boy.frame) * 100, 0, 100, 100, cx, cy)
             boy.dir = -1
         else:
             # if boy x_velocity == 0
             if boy.y_velocity > 0 or boy.y_velocity < 0:
                 if boy.dir == 1:
-                    boy.image.clip_draw(int(boy.frame) * 100, 100, 100, 100, boy.x, boy.y)
+                    boy.image.clip_draw(int(boy.frame) * 100, 100, 100, 100, cx, cy)
                 else:
-                    boy.image.clip_draw(int(boy.frame) * 100, 0, 100, 100, boy.x, boy.y)
+                    boy.image.clip_draw(int(boy.frame) * 100, 0, 100, 100, cx, cy)
             else:
                 # boy is idle
                 if boy.dir == 1:
-                    boy.image.clip_draw(int(boy.frame) * 100, 300, 100, 100, boy.x, boy.y)
+                    boy.image.clip_draw(int(boy.frame) * 100, 300, 100, 100, cx, cy)
                 else:
-                    boy.image.clip_draw(int(boy.frame) * 100, 200, 100, 100, boy.x, boy.y)
+                    boy.image.clip_draw(int(boy.frame) * 100, 200, 100, 100, cx, cy)
 
 
 next_state_table = {
@@ -104,7 +111,8 @@ next_state_table = {
 class Boy:
 
     def __init__(self):
-        self.x, self.y = 1280 // 2, 1024 // 2
+        self.canvas_width = get_canvas_width()
+        self.canvas_height = get_canvas_height()
         # Boy is only once created, so instance image loading is fine
         self.image = load_image('animation_sheet.png')
         self.font = load_font('ENCR10B.TTF', 16)
@@ -115,10 +123,20 @@ class Boy:
         self.cur_state = WalkingState
         self.cur_state.enter(self, None)
 
+        self.eat_sound = load_wav('pickup.wav')
+        self.eat_sound.set_volume(32)
+
+    def eat(self, ball):
+        self.eat_sound.play()
+
     def get_bb(self):
-        # fill here
         return self.x - 50, self.y - 50, self.x + 50, self.y + 50
 
+
+    def set_background(self, bg):
+        self.bg = bg
+        self.x = self.bg.w / 2
+        self.y = self.bg.h / 2
 
     def add_event(self, event):
         self.event_que.insert(0, event)
@@ -133,13 +151,13 @@ class Boy:
 
     def draw(self):
         self.cur_state.draw(self)
-        self.font.draw(self.x - 60, self.y + 50, '(Time: %3.2f)' % get_time(), (255, 255, 0))
-        #fill here
-        draw_rectangle(*self.get_bb())
-        #debug_print('Velocity :' + str(self.velocity) + '  Dir:' + str(self.dir) + ' Frame Time:' + str(game_framework.frame_time))
+        self.font.draw(self.canvas_width//2 - 60, self.canvas_height//2 + 50, '(%5d, %5d)' % (self.x, self.y), (255, 255, 0))
+
+        #draw_rectangle(*self.get_bb())
 
     def handle_event(self, event):
         if (event.type, event.key) in key_event_table:
             key_event = key_event_table[(event.type, event.key)]
             self.add_event(key_event)
+
 

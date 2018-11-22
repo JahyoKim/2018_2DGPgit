@@ -7,18 +7,18 @@ import game_framework
 import game_world
 
 from boy import Boy
+from grass import Grass
 from ball import Ball
-from background import FixedBackground as Background
-#from background import InfiniteBackground as Background
-
 
 name = "MainState"
 
 boy = None
-background = None
+grass = None
 balls = []
 
+
 def collide(a, b):
+    # fill here
     left_a, bottom_a, right_a, top_a = a.get_bb()
     left_b, bottom_b, right_b, top_b = b.get_bb()
 
@@ -30,21 +30,22 @@ def collide(a, b):
     return True
 
 
+
+
 def enter():
     global boy
     boy = Boy()
     game_world.add_object(boy, 1)
 
-    global background
-    background = Background()
-    game_world.add_object(background, 0)
+    global grass
+    grass = Grass()
+    game_world.add_object(grass, 0)
 
     global balls
-    balls = [Ball(background) for i in range(100)]
+    balls = [Ball() for i in range(10)]
     game_world.add_objects(balls, 1)
 
-    background.set_center_object(boy)
-    boy.set_background(background)
+
 
 
 def exit():
@@ -76,8 +77,7 @@ def update():
         if collide(boy, ball):
             balls.remove(ball)
             boy.eat(ball)
-            game_world.remove_object(ball)
-
+        game_world.remove_object(ball)
 
 def draw():
     clear_canvas()
