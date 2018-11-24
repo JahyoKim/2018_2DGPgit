@@ -1,17 +1,30 @@
+import random
 from pico2d import *
+from Stage import *
 from Character import *
 from Background import *
+from Hurdle import *
+from Jelly import *
+from score import *
 
 import game_framework
 import title_state
-
+import main_state2
+import result
 
 running = None
 current_time = 0.0
+stage = None
 character = None
-background = None
-
-
+backstage = None
+hurdle = None
+hurdle2 = None
+jelly = None
+hp = None
+jellysound = None
+hpjellysound = None
+score = None
+ascore = 0
 name = "MainState"
 
 def collid(a, b):
