@@ -138,22 +138,29 @@ def update():
 def handle_events():
     global running, background
 
+    if background.frame >= 8:
+        # background.ChangeState_sound.play()
+        game_framework.change_state(main_state2)
+
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
             running = False
 
-        if event.type == SDL_KEYDOWN and event.key == SDLK_z:
-            character.state = "jump"
-        elif event.type == SDL_KEYDOWN and event.key == SDLK_x:
-            if character.state != "jump":
-                character.state = "slide"
-        elif event.type == SDL_KEYUP and event.key == SDLK_x:
-            if character.state == "slide":
-                character.state = "run"
-                character.y = 180
-        elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
-            running = False
+        else:
+            if event.type == SDL_KEYDOWN and event.key == SDLK_z:
+                character.jump_sound.play()
+                character.state = "jump"
+            elif event.type == SDL_KEYDOWN and event.key == SDLK_x:
+                character.slide_sound.play()
+                if character.state != "jump":
+                    character.state = "slide"
+            elif event.type == SDL_KEYUP and event.key == SDLK_x:
+                if character.state == "slide":
+                    character.state = "run"
+                    character.y = 180
+            elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
+                running = False
 
 def draw():
     global background, character, running
