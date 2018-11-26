@@ -16,7 +16,7 @@ running = None
 current_time = 0.0
 stage = None
 character = None
-backstage = None
+background = None
 hurdle = None
 hurdle2 = None
 jelly = None
@@ -39,11 +39,18 @@ def collid(a, b):
     return True
 
 def enter():
-    global background, character, running
-   # background = Background()
+    global stage, character, background, running, hurdle, hurdle2, jelly, hp, jellysound, hpjellysound, font, score
+    background = Background()
+    stage = Stage()
     character = Character()
-
-    #font = load_font('image\\ENCR10B.TTF')
+    hurdle = Hurdle1().create()
+    hurdle2 = Hurdle12().create()
+    jelly = Jelly().create()
+    hp = Hp().create()
+    jellysound = Jelly()
+    hpjellysound = Hp()
+    score = Score()
+    font = load_font('image\\ENCR10B.TTF')
 
     running = True
 
@@ -55,9 +62,29 @@ def get_frame_time():
     return frame_time
 
 def exit():
-    global character, background, running
-    del(character)
-    del(background)
+    global stage, character, background, running, hurdle, hurdle2, jelly, hp
+    del (stage)
+    del (character)
+    del (background)
+    for hur in hurdle:
+        hurdle.remove(hur)
+        del (hur)
+    del (hurdle)
+
+    for hur in hurdle2:
+        hurdle2.remove(hur)
+        del (hur)
+    del (hurdle2)
+
+    for jel in jelly:
+        jelly.remove(jel)
+        del (jel)
+    del (jelly)
+
+    for hpj in hp:
+        hp.remove(hpj)
+        del (hpj)
+    del (hp)
 
 
 def pause():
@@ -68,11 +95,43 @@ def resume():
     pass
 
 def update():
-    global running, background, character
+    global running, background, character, stage, hurdle, ascore
     handle_events()
     frame_time = get_frame_time()
     background.update(frame_time)
     character.update()
+    stage.update(frame_time)
+    score.stage1_socre()
+    ascore = score.score
+    print("Stage1 Clear Time : ", score.score)
+    for hur in hurdle:
+        hur.update(frame_time)
+        if collid(character, hur):
+            #character.collid_sound.play()
+            character.state = "collid"
+
+    for hur in hurdle2:
+        hur.update(frame_time)
+        if collid(character, hur):
+            # character.collid_sound.play()
+            character.state = "collid"
+
+    for jel in jelly:
+        jel.update(frame_time)
+        if collid(character, jel):
+            jellysound.jellyitem_sound.play()
+            jelly.remove(jel)
+            score.score += 100
+
+    for hpj in hp:
+        hpj.update(frame_time)
+        if collid(character, hpj):
+            hpjellysound.hpitem_sound.play()
+            hp.remove(hpj)
+            character.heal()
+
+    if character.hp <= 0:
+        game_framework.change_state(result)
 
 
 def handle_events():
