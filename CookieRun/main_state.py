@@ -163,10 +163,28 @@ def handle_events():
                 running = False
 
 def draw():
-    global background, character, running
+    global background, stage, character, running
     clear_canvas()
     background.draw()
+    stage.draw()
 
+    for hur in hurdle:
+        hur.draw()
+        # hur.draw_bb()
+
+    for hur in hurdle2:
+        hur.draw()
+        # hur.draw_bb()
+
+    for jel in jelly:
+        jel.draw()
+        # jel.draw_bb()
+
+    for hpj in hp:
+        hpj.draw()
+        # hpj.draw_bb()
+
+    font.draw(100, 550, 'Score : %3.2d' % score.score, (255, 255, 255))
     character.draw()
 
     delay(0.04)
