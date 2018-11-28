@@ -2,21 +2,21 @@ from pico2d import *
 import random
 import json
 
-jelly_data_file = open('MapData\\jelly', 'r')
+jelly_data_file = open('Map\\jelly', 'r')
 jelly_data = json.load(jelly_data_file)
 jelly_data_file.close()
 
-hp_data_file = open('MapData\\hp', 'r')
+hp_data_file = open('Map\\hp', 'r')
 hp_data = json.load(hp_data_file)
 hp_data_file.close()
 
 ################################################
 
-jelly_data_file2 = open('MapData\\jelly2', 'r')
+jelly_data_file2 = open('Map\\jelly2', 'r')
 jelly_data2 = json.load(jelly_data_file2)
 jelly_data_file2.close()
 
-hp_data_file2 = open('MapData\\hp2', 'r')
+hp_data_file2 = open('Map\\hp2', 'r')
 hp_data2 = json.load(hp_data_file2)
 hp_data_file2.close()
 
@@ -37,7 +37,7 @@ class Jelly:
         self.distance = 0
 
         if Jelly.image == None:
-            self.jelly = load_image('image\\jelly.png')
+            self.jelly = load_image('sprite\\jelly.png')
         if self.jellyitem == None:
             self.jellyitem_sound = load_wav('Sound\\jelly.wav')
             self.jellyitem_sound.set_volume(64)
@@ -93,7 +93,7 @@ class Hp:
         self.distance = 0
 
         if Hp.image == None:
-            self.hp = load_image('image\\hp_jelly.png')
+            self.hp = load_image('sprite\\hp_jelly.png')
 
         if self.hpitem == None:
             self.hpitem_sound = load_wav('Sound\\hp_jelly.wav')
@@ -148,7 +148,7 @@ class Jelly2:
         self.distance = 0
 
         if Jelly2.image == None:
-            self.jelly = load_image('image\\jelly.png')
+            self.jelly = load_image('sprite\\jelly.png')
         if self.jellyitem == None:
             self.jellyitem_sound = load_wav('Sound\\jelly.wav')
             self.jellyitem_sound.set_volume(64)
@@ -205,7 +205,7 @@ class Hp2:
         self.distance = 0
 
         if Hp2.image == None:
-            self.hp2 = load_image('image\\hp_jelly.png')
+            self.hp2 = load_image('sprite\\hp_jelly.png')
 
         if self.hpitem == None:
             self.hpitem_sound = load_wav('Sound\\hp_jelly.wav')

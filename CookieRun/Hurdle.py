@@ -2,22 +2,22 @@ from pico2d import *
 import random
 import json
 
-hurdle_data_file = open('MapData\\stage1-1', 'r')
+hurdle_data_file = open('Map\\stage1-1', 'r')
 hurdle_data = json.load(hurdle_data_file)
 hurdle_data_file.close()
 
-hurdle_data_file2 = open('MapData\\stage1-2', 'r')
+hurdle_data_file2 = open('Map\\stage1-2', 'r')
 hurdle_data2 = json.load(hurdle_data_file2)
 hurdle_data_file2.close()
 
 
 ################################################################
 
-hurdle_data_file3 = open('MapData\\stage2-1', 'r')
+hurdle_data_file3 = open('Map\\stage2-1', 'r')
 hurdle_data3 = json.load(hurdle_data_file3)
 hurdle_data_file3.close()
 
-hurdle_data_file4 = open('MapData\\stage2-2', 'r')
+hurdle_data_file4 = open('Map\\stage2-2', 'r')
 hurdle_data4 = json.load(hurdle_data_file4)
 hurdle_data_file4.close()
 
@@ -41,7 +41,7 @@ class Hurdle1:
 
 
         if Hurdle1.image == None:
-            self.hurdle11 = load_image('image\\hurdle1-1.png')
+            self.hurdle11 = load_image('sprite\\hurdle1-1.png')
 
     def create(self):
         hurdle_state = {
@@ -95,7 +95,7 @@ class Hurdle12:
 
 
         if Hurdle12.image == None:
-            self.hurdle12 = load_image('image\\hurdle1-2.png')
+            self.hurdle12 = load_image('sprite\\hurdle1-2.png')
 
     def create(self):
         hurdle_state = {
@@ -149,7 +149,7 @@ class Hurdle2:
 
 
         if Hurdle2.image == None:
-            self.hurdle21 = load_image('image\\hurdle2-1.png')
+            self.hurdle21 = load_image('sprite\\hurdle2-1.png')
 
     def create(self):
         hurdle_state = {
@@ -203,7 +203,7 @@ class Hurdle22:
 
 
         if Hurdle22.image == None:
-            self.hurdle22 = load_image('image\\hurdle2-2.png')
+            self.hurdle22 = load_image('sprite\\hurdle2-2.png')
 
     def create(self):
         hurdle_state = {
