@@ -29,7 +29,6 @@ class Background:
             self.ChangeState_sound.set_volume(64)
 
 
-
     def draw(self):
         if self.count >= 7:
             self.ChangeState_sound.play()
