@@ -12,9 +12,9 @@ image = None
 
 def enter():
     global title, result, font, character, score
-    title = load_image('image\\title.png')
-    result = load_image('image\\result.png')
-    font = load_font('image\\ENCR10B.TTF', 100)
+    title = load_image('sprite\\title.png')
+    result = load_image('sprite\\result.png')
+    font = load_font('sprite\\ENCR10B.TTF', 100)
     score = Score()
 
 
