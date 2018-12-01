@@ -21,8 +21,8 @@ class Stage:
         self.count = 0
 
         if self.image_init == None:
-            self.stage1 = load_image('image\\stage1-0.png')
-            self.stage2 = load_image('image\\stage1-0.png')
+            self.stage1 = load_image('sprite\\stage1-0.png')
+            self.stage2 = load_image('sprite\\stage1-0.png')
 
     def update(self, frame_time):
         if Stage.RUN_SPEED_PPS * frame_time > 7:
@@ -74,8 +74,8 @@ class Stage2:
         self.count = 0
 
         if self.image_init == None:
-            self.stage1 = load_image('image\\stage2-0.png')
-            self.stage2 = load_image('image\\stage2-0.png')
+            self.stage1 = load_image('sprite\\stage2-0.png')
+            self.stage2 = load_image('sprite\\stage2-0.png')
 
     def update(self, frame_time):
         if Stage.RUN_SPEED_PPS * frame_time > 7:
