@@ -2,6 +2,7 @@ from pico2d import *
 
 class Background:
     image_init = None
+    ChangeState = None
 
     PIXEL_PER_METER = (10.0 / 0.3)
     SCROLL_SPEED_KMPH = 30.0
@@ -12,6 +13,8 @@ class Background:
     def __init__(self):
         self.stage1_x = 400
         self.stage1_y = 400
+        self.stage2_x = 1200
+        self.stage2_y = 400
         self.frame = 1
         self.speed = 5
         self.distance = 0
@@ -19,6 +22,8 @@ class Background:
 
         if Background.image_init == None:
             self.stage1 = load_image('sprite\\background.png')
+            self.stage2 = load_image('sprite\\background.png')
+            self.stage3 = load_image('sprite\\background.png')
 
             self.bgm = load_music('Sound\\stage1.mp3')
             self.bgm.set_volume(64)
@@ -36,13 +41,35 @@ class Background:
             delay(0.05)
         else:
             self.stage1.draw(self.stage1_x, self.stage1_y)
+            self.stage2.draw(self.stage2_x, self.stage2_y)
 
 
 
-    def update(self,frame_time):
+    def update(self, frame_time):
         if Background.RUN_SPEED_PPS * frame_time > 7:
             self.distance = 10
         else:
             self.distance = Background.RUN_SPEED_PPS * frame_time
+
+        self.stage1_x -= self.distance
+        self.stage2_x -= self.distance
+
+        if self.stage2_x < - 400:
+            self.count += 1
+            self.stage2_x = 1190
+
+        if self.stage1_x < - 400:
+            self.count += 1
+            self.stage1_x = 1190
+
+        if self.count >= 7:
+            self.stage1_x = 400
+            self.stage1_y = 400
+
+            if self.frame == 8:
+                self.frame = 8
+
+            else:
+                self.frame = (self.frame + 1) % 9
 
 
