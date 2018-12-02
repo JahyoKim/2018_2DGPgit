@@ -27,7 +27,7 @@ score = None
 ascore = 0
 name = "MainState"
 
-def collid(a, b):
+def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
     left_b, bottom_b, right_b, top_b = b.get_bb()
 
@@ -50,7 +50,7 @@ def enter():
     jellysound = Jelly()
     hpjellysound = Hp()
     score = Score()
-    font = load_font('image\\ENCR10B.TTF')
+    font = load_font('sprite\\ENCR10B.TTF')
 
     running = True
 
@@ -101,31 +101,31 @@ def update():
     background.update(frame_time)
     character.update()
     stage.update(frame_time)
-    score.stage1_socre()
+    score.stage1_score()
     ascore = score.score
     print("Stage1 Clear Time : ", score.score)
     for hur in hurdle:
         hur.update(frame_time)
-        if collid(character, hur):
-            #character.collid_sound.play()
-            character.state = "collid"
+        if collide(character, hur):
+            #character.collide_sound.play()
+            character.state = "collide"
 
     for hur in hurdle2:
         hur.update(frame_time)
-        if collid(character, hur):
-            # character.collid_sound.play()
-            character.state = "collid"
+        if collide(character, hur):
+            # character.collide_sound.play()
+            character.state = "collide"
 
     for jel in jelly:
         jel.update(frame_time)
-        if collid(character, jel):
+        if collide(character, jel):
             jellysound.jellyitem_sound.play()
             jelly.remove(jel)
             score.score += 100
 
     for hpj in hp:
         hpj.update(frame_time)
-        if collid(character, hpj):
+        if collide(character, hpj):
             hpjellysound.hpitem_sound.play()
             hp.remove(hpj)
             character.heal()
@@ -160,8 +160,11 @@ def handle_events():
                     character.state = "run"
                     character.y = 180
             elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
-                running = False
-
+                game_framework.change_state(title_state)
+            elif event.type == SDL_KEYDOWN and event.key == SDLK_2:
+                game_framework.change_state(main_state2)
+            elif event.type == SDL_KEYDOWN and event.key == SDLK_3:
+                game_framework.change_state(result)
 def draw():
     global background, stage, character, running
     clear_canvas()

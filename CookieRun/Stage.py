@@ -13,16 +13,16 @@ class Stage:
 
     def __init__(self):
         self.stage1_x = 400
-        self.stage1_y = 400
+        self.stage1_y = 300
         self.stage2_x = 1200
-        self.stage2_y = 400
+        self.stage2_y = 300
         self.speed = 5
         self.distance = 0
         self.count = 0
 
         if self.image_init == None:
-            self.stage1 = load_image('sprite\\stage1-0.png')
-            self.stage2 = load_image('sprite\\stage1-0.png')
+            self.stage1 = load_image('sprite\\stage1-0_1.png')
+            self.stage2 = load_image('sprite\\stage1-0_1.png')
 
     def update(self, frame_time):
         if Stage.RUN_SPEED_PPS * frame_time > 7:
@@ -43,9 +43,9 @@ class Stage:
 
         if self.count >= 7:
             self.stage1_x = 400
-            self.stage1_y = 400
+            self.stage1_y = 300
             self.stage2_x = 400
-            self.stage2_y = 400
+            self.stage2_y = 300
 
 
     def draw(self):
@@ -66,16 +66,16 @@ class Stage2:
 
     def __init__(self):
         self.stage1_x = 400
-        self.stage1_y = 400
+        self.stage1_y = 300
         self.stage2_x = 1200
-        self.stage2_y = 400
+        self.stage2_y = 300
         self.speed = 5
         self.distance = 0
         self.count = 0
 
         if self.image_init == None:
-            self.stage1 = load_image('sprite\\stage2-0.png')
-            self.stage2 = load_image('sprite\\stage2-0.png')
+            self.stage1 = load_image('sprite\\stage2-0_1.png')
+            self.stage2 = load_image('sprite\\stage2-0_1.png')
 
     def update(self, frame_time):
         if Stage.RUN_SPEED_PPS * frame_time > 7:
@@ -96,9 +96,9 @@ class Stage2:
 
         if self.count >= 7:
             self.stage1_x = 400
-            self.stage1_y = 400
+            self.stage1_y = 300
             self.stage2_x = 400
-            self.stage2_y = 400
+            self.stage2_y = 300
 
 
     def draw(self):

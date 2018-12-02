@@ -1,19 +1,32 @@
 import random
 from pico2d import *
+from Stage import *
 from Character import *
 from Background import *
-import Background
+from Hurdle import *
+from Jelly import *
+from score import *
+
 import game_framework
 import title_state
+import result
 
 running = None
 current_time = 0.0
+stage = None
 character = None
-Background = None
+background = None
+hurdle = None
+hurdle2 = None
+jelly = None
+hp = None
+jellysound = None
+hpjellysound = None
+
 
 name = "MainState"
 
-def collid(a, b):
+def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
     left_b, bottom_b, right_b, top_b = b.get_bb()
 
@@ -25,10 +38,18 @@ def collid(a, b):
     return True
 
 def enter():
-    global background, character, running, font
+    global stage, character, background, running, hurdle, hurdle2, jelly, hp, jellysound, hpjellysound, font, score
     background = Background()
+    stage = Stage2()
     character = Character()
-    #font = load_font('image\\ENCR10B.TTF')
+    hurdle = Hurdle2().create()
+    hurdle2 = Hurdle22().create()
+    jelly = Jelly2().create()
+    hp = Hp2().create()
+    jellysound = Jelly()
+    hpjellysound = Hp()
+    score = Score()
+    font = load_font('sprite\\ENCR10B.TTF')
 
     running = True
 
@@ -40,9 +61,29 @@ def get_frame_time():
     return frame_time
 
 def exit():
-    global character, background, running
-    del(character)
-    del(background)
+    global stage, character, background, running, hurdle, hurdle2, jelly, hp
+    del (stage)
+    del (character)
+    del (background)
+    for hur in hurdle:
+        hurdle.remove(hur)
+        del (hur)
+    del (hurdle)
+
+    for hur in hurdle2:
+        hurdle2.remove(hur)
+        del (hur)
+    del (hurdle2)
+
+    for jel in jelly:
+        jelly.remove(jel)
+        del (jel)
+    del (jelly)
+
+    for hpj in hp:
+        hp.remove(hpj)
+        del (hpj)
+    del (hp)
 
 
 def pause():
@@ -53,35 +94,98 @@ def resume():
     pass
 
 def update():
-    global running, background, character
+    global running, background, character, stage, hurdle, ascore, score
     handle_events()
+    frame_time = get_frame_time()
+    background.update(frame_time)
+    character.update()
+    stage.update(frame_time)
+    score.stage2_score()
+    ascore = score.score
+    print("Stage2 Clear Time : ", score.score)
+
+    for hur in hurdle:
+        hur.update(frame_time)
+        if collide(character, hur):
+            #character.collide_sound.play()
+            character.state = "collide"
+
+    for hur in hurdle2:
+        hur.update(frame_time)
+        if collide(character, hur):
+            # character.collide_sound.play()
+            character.state = "collide"
+
+    for jel in jelly:
+        jel.update(frame_time)
+        if collide(character, jel):
+            jellysound.jellyitem_sound.play()
+            jelly.remove(jel)
+            score.score += 100
+
+    for hpj in hp:
+        hpj.update(frame_time)
+        if collide(character, hpj):
+            hpjellysound.hpitem_sound.play()
+            hp.remove(hpj)
+            character.heal()
+
+    if character.hp <= 0:
+        game_framework.change_state(result)
+
 
 
 def handle_events():
     global running, background
+
+    if background.frame >= 8:
+        # background.ChangeState_sound.play()
+        game_framework.change_state(result)
 
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
             running = False
 
-        if event.type == SDL_KEYDOWN and event.key == SDLK_z:
-            character.state = "jump"
-        elif event.type == SDL_KEYDOWN and event.key == SDLK_x:
-            if character.state != "jump":
-                character.state = "slide"
-        elif event.type == SDL_KEYUP and event.key == SDLK_x:
-            if character.state == "slide":
-                character.state = "run"
-                character.y = 180
-        elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
-            running = False
-
+        else:
+            if event.type == SDL_KEYDOWN and event.key == SDLK_z:
+                character.jump_sound.play()
+                character.state = "jump"
+            elif event.type == SDL_KEYDOWN and event.key == SDLK_x:
+                character.slide_sound.play()
+                if character.state != "jump":
+                    character.state = "slide"
+            elif event.type == SDL_KEYUP and event.key == SDLK_x:
+                if character.state == "slide":
+                    character.state = "run"
+                    character.y = 180
+            elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
+                game_framework.change_state(title_state)
+            elif event.type == SDL_KEYDOWN and event.key == SDLK_3:
+                game_framework.change_state(result)
 def draw():
-    global background, character, running
+    global background, stage, character, running
     clear_canvas()
     background.draw()
+    stage.draw()
 
+    for hur in hurdle:
+        hur.draw()
+        # hur.draw_bb()
+
+    for hur in hurdle2:
+        hur.draw()
+        # hur.draw_bb()
+
+    for jel in jelly:
+        jel.draw()
+        # jel.draw_bb()
+
+    for hpj in hp:
+        hpj.draw()
+        # hpj.draw_bb()
+
+    font.draw(100, 550, 'Score : %3.2d' % score.score, (255, 255, 255))
     character.draw()
 
     delay(0.04)

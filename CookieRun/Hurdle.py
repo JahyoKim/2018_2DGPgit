@@ -45,7 +45,7 @@ class Hurdle1:
 
     def create(self):
         hurdle_state = {
-            "hurdle1" : self.image
+            "hurdle1": self.image
         }
 
         hurdle = []
@@ -99,7 +99,7 @@ class Hurdle12:
 
     def create(self):
         hurdle_state = {
-            "hurdle1" : self.image
+            "hurdle1": self.image
         }
 
         hurdle = []
@@ -153,7 +153,7 @@ class Hurdle2:
 
     def create(self):
         hurdle_state = {
-            "hurdle1" : self.image
+            "hurdle1": self.image
         }
 
         hurdle = []

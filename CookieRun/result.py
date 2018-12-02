@@ -12,7 +12,7 @@ image = None
 
 def enter():
     global title, result, font, character, score
-    title = load_image('sprite\\title.png')
+    title = load_image('sprite\\title_1.png')
     result = load_image('sprite\\result.png')
     font = load_font('sprite\\ENCR10B.TTF', 100)
     score = Score()
@@ -21,8 +21,10 @@ def enter():
 
 
 def exit():
-    global image
-    del(image)
+    global title,result
+    del(title)
+    del(result)
+    close_canvas()
 
 
 def handle_events():

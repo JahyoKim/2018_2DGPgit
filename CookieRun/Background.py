@@ -5,10 +5,10 @@ class Background:
     ChangeState = None
 
     PIXEL_PER_METER = (10.0 / 0.3)
-    SCROLL_SPEED_KMPH = 30.0
-    SCROLL_SPEED_MPM = (SCROLL_SPEED_KMPH * 1000.0 / 60.0)
-    SCROLL_SPEED_MPS = (SCROLL_SPEED_MPM / 60.0)
-    SCROLL_SPEED_PPS = (SCROLL_SPEED_MPS * PIXEL_PER_METER)
+    RUN_SPEED_KMPH = 30.0
+    RUN_SPEED_MPM = (RUN_SPEED_KMPH * 1000.0 / 60.0)
+    RUN_SPEED_MPS = (RUN_SPEED_MPM / 60.0)
+    RUN_SPEED_PPS = (RUN_SPEED_MPS * PIXEL_PER_METER)
 
     def __init__(self):
         self.stage1_x = 400
@@ -21,9 +21,9 @@ class Background:
         self.count = 0
 
         if Background.image_init == None:
-            self.stage1 = load_image('sprite\\background.png')
-            self.stage2 = load_image('sprite\\background.png')
-            self.stage3 = load_image('sprite\\background.png')
+            self.stage1 = load_image('sprite\\stage1-1.png')
+            self.stage2 = load_image('sprite\\stage1-1.png')
+            self.stage3 = load_image('sprite\\stage1-rot.png')
 
             self.bgm = load_music('Sound\\stage1.mp3')
             self.bgm.set_volume(64)
@@ -91,7 +91,6 @@ class BackStage2:
         self.speed = 5
         self.distance = 0
         self.count = 0
-
 
         if Background.image_init == None:
             self.stage1 = load_image('sprite\\stage2-1.png')
