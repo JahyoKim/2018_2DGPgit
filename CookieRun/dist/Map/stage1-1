@@ -1,0 +1,14 @@
+{
+    "hurdle1"  : {"state" : "hurdle1", "x" : 600,  "y" : 168},
+    "hurdle2"  : {"state" : "hurdle1", "x" : 1200, "y" : 168},
+    "hurdle3"  : {"state" : "hurdle1", "x" : 1500, "y" : 168},
+    "hurdle4"  : {"state" : "hurdle1", "x" : 1890, "y" : 168},
+    "hurdle5"  : {"state" : "hurdle1", "x" : 1930, "y" : 168},
+    "hurdle6"  : {"state" : "hurdle1", "x" : 2500, "y" : 168},
+    "hurdle7"  : {"state" : "hurdle1", "x" : 3000, "y" : 168},
+    "hurdle8"  : {"state" : "hurdle1", "x" : 3300, "y" : 168},
+    "hurdle9"  : {"state" : "hurdle1", "x" : 3600, "y" : 168},
+    "hurdle10" : {"state" : "hurdle1", "x" : 3900, "y" : 168},
+    "hurdle11" : {"state" : "hurdle1", "x" : 4900, "y" : 168},
+    "hurdle12" : {"state" : "hurdle1", "x" : 5700, "y" : 168}
+}
