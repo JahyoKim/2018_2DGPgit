@@ -11,11 +11,11 @@ class Character:
         self.x = 200
         self.y = 180
         self.frame = 0
-        self.frame_2 = 0
+        #self.frame_2 = 0
         self.state = "run"
         self.jump_state = "up"
         self.slide_state = "slide"
-        self.hp = 500
+        self.hp = 1000   ########################
         self.score = 0
 
         if self.image_init == None:
@@ -57,20 +57,20 @@ class Character:
             self.collidetime += 1
             if self.collidetime == 1:
                 self.collide_sound.play()
-                self.hp -= 50
-            if(self.collidetime >= 10):
-                self.state = "run"
+                self.hp -= 100  #######################################
+            if(self.collidetime >= 3):
                 self.y = 180
                 self.collidetime = 0
+                self.state = "run"
 
         if self.state == "jump" and self.jump_state == "up":
-            if self.y >= 240:
+            if self.y >= 270:
                 self.jump_state = "down"
-            self.y += 10
+            self.y += 15
 
         if self.state == "jump" and self.jump_state == "down":
-            if self.y >= 180:
-                self.y -= 10
+            if self.y >= 190:
+                self.y -= 15
 
         if self.state == "jump" and self.y == 180:
             self.state = "run"
@@ -80,8 +80,10 @@ class Character:
             self.y = 170
 
 
+
+
     def get_bb(self):
-        return self.x - 30, self.y - 40, self.x + 25, self.y + 35
+        return self.x - 25, self.y - 20, self.x + 25, self.y + 20
 
     def draw_bb(self):
         draw_rectangle(*self.get_bb())

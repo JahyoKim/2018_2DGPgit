@@ -39,12 +39,12 @@ def draw():
     update_canvas()
 
 def handle_events():
-    events = get_events()
     pass
 
 
 def pause():
     pass
+
 
 def resume():
     pass

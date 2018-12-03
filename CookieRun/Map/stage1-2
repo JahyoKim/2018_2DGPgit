@@ -1,9 +1,7 @@
 {
-    "hurdle1" : {"state" : "hurdle1", "x" : 1000, "y" : 450},
-    "hurdle2" : {"state" : "hurdle1", "x" : 1700, "y" : 450},
-    "hurdle3" : {"state" : "hurdle1", "x" : 2200, "y" : 450},
-    "hurdle4" : {"state" : "hurdle1", "x" : 2700, "y" : 450},
-    "hurdle5" : {"state" : "hurdle1", "x" : 4200, "y" : 450},
-    "hurdle6" : {"state" : "hurdle1", "x" : 4500, "y" : 450},
-    "hurdle7" : {"state" : "hurdle1", "x" : 5400, "y" : 450}
+    "hurdle1" : {"state" : "hurdle1", "x" : 1700, "y" : 410},
+    "hurdle2" : {"state" : "hurdle1", "x" : 2700, "y" : 410},
+    "hurdle3" : {"state" : "hurdle1", "x" : 4200, "y" : 410},
+    "hurdle4" : {"state" : "hurdle1", "x" : 4500, "y" : 410},
+    "hurdle5" : {"state" : "hurdle1", "x" : 5400, "y" : 410}
 }

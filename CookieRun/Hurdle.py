@@ -11,7 +11,8 @@ hurdle_data2 = json.load(hurdle_data_file2)
 hurdle_data_file2.close()
 
 
-################################################################
+#
+
 
 hurdle_data_file3 = open('Map\\stage2-1', 'r')
 hurdle_data3 = json.load(hurdle_data_file3)
@@ -41,7 +42,7 @@ class Hurdle1:
 
 
         if Hurdle1.image == None:
-            self.hurdle11 = load_image('sprite\\hurdle1-1.png')
+            self.hurdle11 = load_image('sprite\\hurdle_04_1.png')
 
     def create(self):
         hurdle_state = {
@@ -68,8 +69,10 @@ class Hurdle1:
 
         self.x -= self.distance
 
+
     def get_bb(self):
-        return self.x - 20, self.y - 20, self.x + 15, self.y + 15
+        return self.x - 10, self.y - 13, self.x + 10, self.y + 12
+
 
     def draw_bb(self):
         draw_rectangle(*self.get_bb())
@@ -77,6 +80,8 @@ class Hurdle1:
 
     def draw(self):
         self.hurdle11.draw(self.x, self.y)
+
+
 
 class Hurdle12:
     global hurdle_data2
@@ -95,7 +100,7 @@ class Hurdle12:
 
 
         if Hurdle12.image == None:
-            self.hurdle12 = load_image('sprite\\hurdle1-2.png')
+            self.hurdle12 = load_image('sprite\\hurdle_0.png')
 
     def create(self):
         hurdle_state = {
@@ -122,14 +127,18 @@ class Hurdle12:
 
         self.x -= self.distance
 
+
     def get_bb(self):
         return self.x - 50, self.y - 210, self.x + 50, self.y + 30
+
 
     def draw_bb(self):
         draw_rectangle(*self.get_bb())
 
+
     def draw(self):
         self.hurdle12.draw(self.x, self.y)
+
 
 
 class Hurdle2:
@@ -146,7 +155,6 @@ class Hurdle2:
     def __init__(self):
         self.speed = 10
         self.distance = 0
-
 
         if Hurdle2.image == None:
             self.hurdle21 = load_image('sprite\\hurdle2-1.png')
@@ -176,8 +184,10 @@ class Hurdle2:
 
         self.x -= self.distance
 
+
     def get_bb(self):
         return self.x - 20, self.y - 20, self.x + 15, self.y + 25
+
 
     def draw_bb(self):
         draw_rectangle(*self.get_bb())
@@ -185,6 +195,8 @@ class Hurdle2:
 
     def draw(self):
         self.hurdle21.draw(self.x, self.y - 10)
+
+
 
 class Hurdle22:
     global hurdle_data4
@@ -230,8 +242,10 @@ class Hurdle22:
 
         self.x -= self.distance
 
+
     def get_bb(self):
         return self.x - 50, self.y - 210, self.x + 50, self.y + 30
+
 
     def draw_bb(self):
         draw_rectangle(*self.get_bb())

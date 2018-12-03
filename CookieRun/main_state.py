@@ -1,4 +1,3 @@
-import random
 from pico2d import *
 from Stage import *
 from Character import *
@@ -17,10 +16,10 @@ current_time = 0.0
 stage = None
 character = None
 background = None
-hurdle = None
-hurdle2 = None
 jelly = None
 hp = None
+hurdle = None
+hurdle2 = None
 jellysound = None
 hpjellysound = None
 score = None
@@ -107,13 +106,11 @@ def update():
     for hur in hurdle:
         hur.update(frame_time)
         if collide(character, hur):
-            #character.collide_sound.play()
             character.state = "collide"
 
     for hur in hurdle2:
         hur.update(frame_time)
         if collide(character, hur):
-            # character.collide_sound.play()
             character.state = "collide"
 
     for jel in jelly:
@@ -139,7 +136,6 @@ def handle_events():
     global running, background
 
     if background.frame >= 8:
-        # background.ChangeState_sound.play()
         game_framework.change_state(main_state2)
 
     events = get_events()
@@ -153,18 +149,18 @@ def handle_events():
                 character.state = "jump"
             elif event.type == SDL_KEYDOWN and event.key == SDLK_x:
                 character.slide_sound.play()
-                if character.state != "jump":
-                    character.state = "slide"
+                character.state = "slide"
             elif event.type == SDL_KEYUP and event.key == SDLK_x:
-                if character.state == "slide":
-                    character.state = "run"
-                    character.y = 180
+                character.state = "run"
+                character.y = 180
             elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
                 game_framework.change_state(title_state)
             elif event.type == SDL_KEYDOWN and event.key == SDLK_2:
                 game_framework.change_state(main_state2)
             elif event.type == SDL_KEYDOWN and event.key == SDLK_3:
                 game_framework.change_state(result)
+
+
 def draw():
     global background, stage, character, running
     clear_canvas()
@@ -173,19 +169,15 @@ def draw():
 
     for hur in hurdle:
         hur.draw()
-        # hur.draw_bb()
 
     for hur in hurdle2:
         hur.draw()
-        # hur.draw_bb()
 
     for jel in jelly:
         jel.draw()
-        # jel.draw_bb()
 
     for hpj in hp:
         hpj.draw()
-        # hpj.draw_bb()
 
     font.draw(100, 550, 'Score : %3.2d' % score.score, (255, 255, 255))
     character.draw()
@@ -193,4 +185,3 @@ def draw():
     delay(0.04)
     update_canvas()
 
-#    close_canvas()

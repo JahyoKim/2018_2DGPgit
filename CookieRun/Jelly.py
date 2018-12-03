@@ -10,7 +10,9 @@ hp_data_file = open('Map\\hp', 'r')
 hp_data = json.load(hp_data_file)
 hp_data_file.close()
 
-################################################
+
+#
+
 
 jelly_data_file2 = open('Map\\jelly2', 'r')
 jelly_data2 = json.load(jelly_data_file2)
@@ -19,6 +21,7 @@ jelly_data_file2.close()
 hp_data_file2 = open('Map\\hp2', 'r')
 hp_data2 = json.load(hp_data_file2)
 hp_data_file2.close()
+
 
 
 class Jelly:
@@ -32,18 +35,21 @@ class Jelly:
     RUN_SPEED_MPS = (RUN_SPEED_MPM / 60.0)
     RUN_SPEED_PPS = (RUN_SPEED_MPS * PIXEL_PER_METER)
 
+
     def __init__(self):
         self.speed = 10
         self.distance = 0
 
         if Jelly.image == None:
-            self.jelly = load_image('sprite\\jelly.png')
+            self.jelly = load_image('sprite\\jelly_0.png')
         if self.jellyitem == None:
             self.jellyitem_sound = load_wav('Sound\\jelly.wav')
             self.jellyitem_sound.set_volume(64)
 
+
     def jellysound(self):
         self.jellyitem_sound.play()
+
 
     def create(self):
         hurdle_state = {
@@ -60,6 +66,7 @@ class Jelly:
 
         return jelly
 
+
     def update(self, frame_time):
         if Jelly.RUN_SPEED_PPS * frame_time > 7:
             self.distance = 10
@@ -68,14 +75,19 @@ class Jelly:
 
         self.x -= self.distance
 
+
     def get_bb(self):
-        return self.x - 20, self.y - 20, self.x + 15, self.y + 15
+        return self.x - 15, self.y - 13, self.x + 15, self.y + 13
+
 
     def draw_bb(self):
         draw_rectangle(*self.get_bb())
 
+
     def draw(self):
         self.jelly.draw(self.x, self.y)
+
+
 
 class Hp:
     global hp_data
@@ -88,6 +100,7 @@ class Hp:
     RUN_SPEED_MPS = (RUN_SPEED_MPM / 60.0)
     RUN_SPEED_PPS = (RUN_SPEED_MPS * PIXEL_PER_METER)
 
+
     def __init__(self):
         self.speed = 10
         self.distance = 0
@@ -98,6 +111,7 @@ class Hp:
         if self.hpitem == None:
             self.hpitem_sound = load_wav('Sound\\hp_jelly.wav')
             self.hpitem_sound.set_volume(64)
+
 
     def create(self):
         hurdle_state = {
@@ -114,6 +128,7 @@ class Hp:
 
         return hp
 
+
     def update(self, frame_time):
         if Jelly.RUN_SPEED_PPS * frame_time > 7:
             self.distance = 10
@@ -122,14 +137,18 @@ class Hp:
 
         self.x -= self.distance
 
+
     def get_bb(self):
         return self.x - 20, self.y - 20, self.x + 15, self.y + 15
+
 
     def draw_bb(self):
         draw_rectangle(*self.get_bb())
 
+
     def draw(self):
         self.hp.draw(self.x, self.y)
+
 
 
 class Jelly2:
@@ -143,6 +162,7 @@ class Jelly2:
     RUN_SPEED_MPS = (RUN_SPEED_MPM / 60.0)
     RUN_SPEED_PPS = (RUN_SPEED_MPS * PIXEL_PER_METER)
 
+
     def __init__(self):
         self.speed = 10
         self.distance = 0
@@ -153,8 +173,10 @@ class Jelly2:
             self.jellyitem_sound = load_wav('Sound\\jelly.wav')
             self.jellyitem_sound.set_volume(64)
 
+
     def jellysound(self):
         self.jellyitem_sound.play()
+
 
     def create(self):
         hurdle_state = {
@@ -171,6 +193,7 @@ class Jelly2:
 
         return jelly
 
+
     def update(self, frame_time):
         if Jelly2.RUN_SPEED_PPS * frame_time > 7:
             self.distance = 10
@@ -179,14 +202,18 @@ class Jelly2:
 
         self.x -= self.distance
 
+
     def get_bb(self):
         return self.x - 20, self.y - 20, self.x + 15, self.y + 15
+
 
     def draw_bb(self):
         draw_rectangle(*self.get_bb())
 
+
     def draw(self):
         self.jelly.draw(self.x, self.y)
+
 
 
 class Hp2:
@@ -200,6 +227,7 @@ class Hp2:
     RUN_SPEED_MPS = (RUN_SPEED_MPM / 60.0)
     RUN_SPEED_PPS = (RUN_SPEED_MPS * PIXEL_PER_METER)
 
+
     def __init__(self):
         self.speed = 10
         self.distance = 0
@@ -210,6 +238,7 @@ class Hp2:
         if self.hpitem == None:
             self.hpitem_sound = load_wav('Sound\\hp_jelly.wav')
             self.hpitem_sound.set_volume(64)
+
 
     def create(self):
         hurdle_state = {
@@ -226,6 +255,7 @@ class Hp2:
 
         return hp
 
+
     def update(self, frame_time):
         if Jelly.RUN_SPEED_PPS * frame_time > 7:
             self.distance = 10
@@ -234,11 +264,14 @@ class Hp2:
 
         self.x -= self.distance
 
+
     def get_bb(self):
         return self.x - 20, self.y - 20, self.x + 15, self.y + 15
 
+
     def draw_bb(self):
         draw_rectangle(*self.get_bb())
+
 
     def draw(self):
         self.hp2.draw(self.x, self.y)

@@ -1,6 +1,5 @@
 from pico2d import *
 from score import *
-
 import game_framework
 import main_state
 import main_state2
@@ -10,14 +9,13 @@ name = "ResultState"
 
 image = None
 
+
 def enter():
     global title, result, font, character, score
     title = load_image('sprite\\title_1.png')
     result = load_image('sprite\\result.png')
     font = load_font('sprite\\ENCR10B.TTF', 100)
     score = Score()
-
-
 
 
 def exit():
@@ -49,9 +47,9 @@ def draw():
     font.draw(290, 380, '%3.2d' % main_state2.ascore)
     update_canvas()
 
+
 def update():
     pass
-    #print("Stage1 Clear Time : ", main_state.ascore + main_state2.ascore)
 
 
 def pause():

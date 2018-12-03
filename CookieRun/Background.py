@@ -21,9 +21,9 @@ class Background:
         self.count = 0
 
         if Background.image_init == None:
-            self.stage1 = load_image('sprite\\stage1-1.png')
-            self.stage2 = load_image('sprite\\stage1-1.png')
-            self.stage3 = load_image('sprite\\stage1-rot.png')
+            self.stage1 = load_image('sprite\\back_2.png')
+            self.stage2 = load_image('sprite\\back_2.png')
+            self.stage3 = load_image('sprite\\back_change_1.png')
 
             self.bgm = load_music('Sound\\stage1.mp3')
             self.bgm.set_volume(64)
@@ -73,7 +73,7 @@ class Background:
                 self.frame = (self.frame + 1) % 9
 
 
-class BackStage2:
+class Background2:
     image_init = None
 
     PIXEL_PER_METER = (10.0 / 0.3)
@@ -93,8 +93,8 @@ class BackStage2:
         self.count = 0
 
         if Background.image_init == None:
-            self.stage1 = load_image('sprite\\stage2-1.png')
-            self.stage2 = load_image('sprite\\stage2-1.png')
+            self.stage1 = load_image('sprite\\back_22.png')
+            self.stage2 = load_image('sprite\\back_22.png')
             self.bgm = load_music('Sound\\stage2.mp3')
             self.bgm.set_volume(64)
             self.bgm.repeat_play()

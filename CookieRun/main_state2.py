@@ -1,8 +1,8 @@
 import random
 from pico2d import *
-from Stage import *
 from Character import *
 from Background import *
+from Stage import *
 from Hurdle import *
 from Jelly import *
 from score import *
@@ -26,6 +26,7 @@ hpjellysound = None
 
 name = "MainState"
 
+
 def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
     left_b, bottom_b, right_b, top_b = b.get_bb()
@@ -37,9 +38,10 @@ def collide(a, b):
 
     return True
 
+
 def enter():
     global stage, character, background, running, hurdle, hurdle2, jelly, hp, jellysound, hpjellysound, font, score
-    background = Background()
+    background = Background2()
     stage = Stage2()
     character = Character()
     hurdle = Hurdle2().create()
@@ -53,12 +55,14 @@ def enter():
 
     running = True
 
+
 def get_frame_time():
     global current_time
 
     frame_time = get_time() - current_time
     current_time += frame_time
     return frame_time
+
 
 def exit():
     global stage, character, background, running, hurdle, hurdle2, jelly, hp
@@ -93,8 +97,9 @@ def pause():
 def resume():
     pass
 
+
 def update():
-    global running, background, character, stage, hurdle, ascore, score
+    global running, background, character, stage, hurdle, score, ascore
     handle_events()
     frame_time = get_frame_time()
     background.update(frame_time)
@@ -107,13 +112,11 @@ def update():
     for hur in hurdle:
         hur.update(frame_time)
         if collide(character, hur):
-            #character.collide_sound.play()
             character.state = "collide"
 
     for hur in hurdle2:
         hur.update(frame_time)
         if collide(character, hur):
-            # character.collide_sound.play()
             character.state = "collide"
 
     for jel in jelly:
@@ -136,17 +139,15 @@ def update():
 
 
 def handle_events():
-    global running, background
+    global running
 
     if background.frame >= 8:
-        # background.ChangeState_sound.play()
         game_framework.change_state(result)
 
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
             running = False
-
         else:
             if event.type == SDL_KEYDOWN and event.key == SDLK_z:
                 character.jump_sound.play()
@@ -163,31 +164,30 @@ def handle_events():
                 game_framework.change_state(title_state)
             elif event.type == SDL_KEYDOWN and event.key == SDLK_3:
                 game_framework.change_state(result)
+
+
+
 def draw():
     global background, stage, character, running
     clear_canvas()
     background.draw()
-    stage.draw()
+
 
     for hur in hurdle:
         hur.draw()
-        # hur.draw_bb()
 
     for hur in hurdle2:
         hur.draw()
-        # hur.draw_bb()
 
     for jel in jelly:
         jel.draw()
-        # jel.draw_bb()
 
     for hpj in hp:
         hpj.draw()
-        # hpj.draw_bb()
 
     font.draw(100, 550, 'Score : %3.2d' % score.score, (255, 255, 255))
     character.draw()
-
+    stage.draw()
     delay(0.04)
     update_canvas()
 
